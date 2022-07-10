@@ -2,3 +2,16 @@
     margin: 0;
     padding: 0;
 }
+
+.cards-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.card {
+    width: 150px;
+    height: 200px;
+    background-color: brown;
+}
