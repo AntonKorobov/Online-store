@@ -32,9 +32,15 @@ class BookCard {
     }
 }
 
-FILTER_BUTTON.addEventListener('click', () => {
-    showCards();
-})
+// FILTER_BUTTON.addEventListener('click', () => {
+//     showCards();
+// })
+
+document.body.addEventListener('click', function(event) {
+    if (event.target.className === 'filter') {
+        showCards();
+    }
+});
 
 function filterBaseOfBooks(booksBase) {
     let filteredBase = [...booksBase];
