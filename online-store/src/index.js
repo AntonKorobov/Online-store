@@ -32,9 +32,13 @@ class BookCard {
     }
 }
 
-// FILTER_BUTTON.addEventListener('click', () => {
-//     showCards();
-// })
+showCards();
+
+FILTER_BUTTON.addEventListener('click', () => {
+    FILTER_LANGUAGE_CHECK.checked = false;
+    FILTER_COVER_TYPE_CHECK.checked = false;
+    showCards();
+})
 
 document.body.addEventListener('click', function(event) {
     if (event.target.className === 'filter') {
@@ -46,7 +50,7 @@ function filterBaseOfBooks(booksBase) {
     let filteredBase = [...booksBase];
 
     if (FILTER_LANGUAGE_CHECK.checked) {
-        filteredBase = filterByLanguage(filteredBase, "Eng");
+        filteredBase = filterByLanguage(filteredBase, "English");
     }
     if (FILTER_COVER_TYPE_CHECK.checked) {
         filteredBase = filterByCoverType(filteredBase, "Paperback");

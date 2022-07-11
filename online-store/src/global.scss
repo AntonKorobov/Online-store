@@ -4,18 +4,21 @@
 }
 
 .cards-wrapper {
+    width: 1000px;
+    margin: 50px auto;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 20px;
 }
 
 .card {
-    width: 150px;
-    height: 200px;
+    width: 20%;
+    height: 250px;
     background-color: brown;
     .card_title {
-        height: 50px;
+        height: 70px;
     }
 }
 

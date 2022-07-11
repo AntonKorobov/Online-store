@@ -4,9 +4,13 @@
 }
 
 .cards-wrapper {
+  width: 1000px;
+  margin: 50px auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -17,13 +21,13 @@
 }
 
 .card {
-  width: 150px;
-  height: 200px;
+  width: 20%;
+  height: 250px;
   background-color: brown;
 }
 
 .card .card_title {
-  height: 50px;
+  height: 70px;
 }
 
 .filter-type {
