@@ -14,7 +14,8 @@ const baseConfig = {
                 use: ['style-loader', 'css-loader'],
             },
             {
-                test: /\.ts$/i,
+                // test: /\.[tj]s$/,
+                test: /\.[tj]s$/,
                 use: 'ts-loader'
             },
             {

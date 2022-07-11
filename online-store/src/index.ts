@@ -1,4 +1,5 @@
 // import './global.css';
+// export {}
 
 const response = await fetch('./components/pets_base.json');
 const booksBase = await response.json();
@@ -10,12 +11,13 @@ const FILTER_BUTTON = document.querySelector(".filter-button");
 
 class BookCard {
 
-    constructor(title, author, price, coverType, language) {
+    constructor(title, author, price, coverType, language, img) {
         this.title = title;
         this.author = author;
         this.price = price;
         this.coverType = coverType;
         this.language = language;
+        this.img = img;
     }
 
     createCard() {
@@ -23,7 +25,7 @@ class BookCard {
         card.classList.add("card");
         card.innerHTML = `
                 <h2 class="card_title">${this.title}</h2>
-                <img alt="">
+                <img class="card_img" src="${this.img}" alt="">
                 <p class="card_author"><b>Author:</b> ${this.author}</p>
                 <p class="card_price"><b>Price:</b> ${this.price}</p>
                 <p class="card_cover-type"><b>Cover type:</b> ${this.coverType}</p>
@@ -77,8 +79,9 @@ function showCards() {
         let cardPrice = arrayOfBooks[i]["price"];
         let coverType = arrayOfBooks[i]["coverType"];
         let language = arrayOfBooks[i]["language"];
+        let img = arrayOfBooks[i]["img"];
 
-        let newCard = new BookCard(cardTitle, cardAuthor, cardPrice, coverType, language);
+        let newCard = new BookCard(cardTitle, cardAuthor, cardPrice, coverType, language, img);
 
         CARDS_WRAPPER.appendChild(newCard.createCard())
     }

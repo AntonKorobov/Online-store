@@ -9,7 +9,7 @@
         "price": 50,
         "language": "English",
         "coverType": "Hardcover",
-        "img": "../../assets/pets-jennifer.png"
+        "img": "./assets/Atlas_Shrugged.jpg"
     },
     {
         "title": "1984",
@@ -22,7 +22,7 @@
         "price": 30,
         "language": "English",
         "coverType": "Hardcover",
-        "img": "../../assets/pets-jeSnnifer.png"
+        "img": "./assets/1984.jpg"
     },
     {
         "title": "Fahrenheit 451",
@@ -35,7 +35,7 @@
         "price": 16,
         "language": "English",
         "coverType": "Paperback",
-        "img": "../../assets/pets-jennifer.png"
+        "img": "./assets/Fahrenheit_451.jpg"
     },
     {
         "title": "Steppenwolf",
@@ -48,7 +48,7 @@
         "price": 17,
         "language": "German",
         "coverType": "Paperback",
-        "img": "../../assets/pets-jennifer.png"
+        "img": "./assets/Steppenwolf.jpg"
     },
     {
         "title": "The Twelve Chairs",
@@ -61,7 +61,7 @@
         "price": 21,
         "language": "Russian",
         "coverType": "Paperback",
-        "img": "../../assets/pets-jennifer.png"
+        "img": "./assets/The_Twelve_Chairs.jpg"
     },
     {
         "title": "City",
@@ -74,7 +74,7 @@
         "price": 21,
         "language": "English",
         "coverType": "Paperback",
-        "img": "../../assets/pets-jennifer.png"
+        "img": "./assets/City.jpg"
     },
     {
         "title": "The Sane Society",
@@ -87,7 +87,7 @@
         "price": 23,
         "language": "English",
         "coverType": "Paperback",
-        "img": "../../assets/pets-jennifer.png"
+        "img": "./assets/The_Sane_Society.jpg"
     },
     {
         "title": "The Three-Body Problem",
@@ -100,7 +100,7 @@
         "price": 17,
         "language": "English",
         "coverType": "Paperback",
-        "img": "../../assets/pets-jennifer.png"
+        "img": "./assets/The_Three-Body_Problem.jpg"
     },
     {
         "title": "Cat's Cradle",
@@ -113,7 +113,7 @@
         "price": 29,
         "language": "English",
         "coverType": "Prebound",
-        "img": "../../assets/pets-jennifer.png"
+        "img": "./assets/Cats_Cradle.jpg"
     },
     {
         "title": "Astrophysics for People in a Hurry",
@@ -126,7 +126,7 @@
         "price": 18,
         "language": "English",
         "coverType": "Hardcover",
-        "img": "../../assets/pets-jennifer.png"
+        "img": "./assets/Astrophysics_for_People_in_a_Hurry.jpg"
     },
     {
         "title": "Altered Carbon",
@@ -139,7 +139,7 @@
         "price": 16,
         "language": "English",
         "coverType": "Paperback",
-        "img": "../../assets/pets-jennifer.png"
+        "img": "./assets/Altered_Carbon.jpg"
     },
     {
         "title": "Sapiens. de Animales a Dioses",
@@ -152,7 +152,7 @@
         "price": 16,
         "language": "Spanish",
         "coverType": "Paperback",
-        "img": "../../assets/pets-jennifer.png"
+        "img": "./assets/Sapiens.jpg"
     },
     {
         "title": "Secondhand Time: The Last of the Soviets",
@@ -165,7 +165,7 @@
         "price": 19,
         "language": "English",
         "coverType": "Paperback",
-        "img": "../../assets/pets-jennifer.png"
+        "img": "./assets/Secondhand_Time.jpg"
     },
     {
         "title": "Alindarka's Children: Things Will Be Bad",
@@ -178,7 +178,7 @@
         "price": 19,
         "language": "English",
         "coverType": "Paperback",
-        "img": "../../assets/pets-jennifer.png"
+        "img": "./assets/Alindarkas_Children.jpg"
     },
     {
         "title": "Martin Iden",
@@ -191,7 +191,7 @@
         "price": 15,
         "language": "Russian",
         "coverType": "Paperback",
-        "img": "../../assets/pets-jennifer.png"
+        "img": "./assets/Martin_Iden.jpg"
     },
     {
         "title": "Howl's Moving Castle",
@@ -204,6 +204,6 @@
         "price": 15,
         "language": "English",
         "coverType": "Paperback",
-        "img": "../../assets/pets-jennifer.png"
+        "img": "./assets/Howls_Moving_Castle.jpg"
     }
 ]
