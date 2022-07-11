@@ -1,17 +1,56 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .cards-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
 }
 
 .card {
-    width: 150px;
-    height: 200px;
-    background-color: brown;
+  width: 150px;
+  height: 200px;
+  background-color: brown;
 }
+
+.card .card_title {
+  height: 50px;
+}
+
+.filter-type {
+  width: 300px;
+  margin: 50px auto;
+}
+
+.filter-type li {
+  list-style: none;
+}
+
+.filter-button {
+  margin: 20px;
+  width: 150px;
+  height: 50px;
+  background-color: brown;
+  color: white;
+  font-size: 20px;
+}
+
+.filter-button:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.filter-button:active {
+  background-color: #523838;
+}
+/*# sourceMappingURL=global.css.map */

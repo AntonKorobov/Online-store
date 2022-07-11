@@ -8,7 +8,7 @@
         "publishDate": 2005,
         "price": 50,
         "language": "Eng",
-        "coverType": "hardcover",
+        "coverType": "Hardcover",
         "img": "../../assets/pets-jennifer.png"
     },
     {
@@ -22,7 +22,7 @@
         "price": 30,
         "language": "Eng",
         "coverType": "Hardcover",
-        "img": "../../assets/pets-jennifer.png"
+        "img": "../../assets/pets-jeSnnifer.png"
     },
     {
         "title": "Fahrenheit 451",

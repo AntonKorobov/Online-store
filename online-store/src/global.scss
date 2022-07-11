@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.cards-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.card {
+    width: 150px;
+    height: 200px;
+    background-color: brown;
+    .card_title {
+        height: 50px;
+    }
+}
+
+.filter-type {
+    width: 300px;
+    margin: 50px auto;
+    li {
+        list-style: none;
+    }
+}
+
+.filter-button {
+    margin: 20px;
+    width: 150px;
+    height: 50px;
+    background-color: brown;
+    color: white;
+    font-size: 20px;
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+    &:active {
+        background-color: rgb(82, 56, 56);
+    }
+}
