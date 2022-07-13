@@ -1,16 +1,18 @@
-// import './global.css';
-// export {}
+import './global.css';
 
-const response = await fetch('./components/pets_base.json');
-const booksBase = await response.json();
+import { showModule } from './components/filter'
+
+import booksBase from './components/pets_base.json' assert { type: 'json' };
+
+showModule();
 
 const CARDS_WRAPPER = document.querySelector(".cards-wrapper");
 const FILTER_LANGUAGE_CHECK = document.querySelector("#languageFilter");
 const FILTER_COVER_TYPE_CHECK = document.querySelector("#coverTypeFilter");
 const FILTER_BUTTON = document.querySelector(".filter-button");
 
+//-------------------------------------------------------------
 class BookCard {
-
     constructor(title, author, price, coverType, language, img) {
         this.title = title;
         this.author = author;
@@ -33,9 +35,11 @@ class BookCard {
         return card
     }
 }
+//-------------------------------------------------------------
 
 showCards();
 
+//-------------------------------------------------------------
 FILTER_BUTTON.addEventListener('click', () => {
     FILTER_LANGUAGE_CHECK.checked = false;
     FILTER_COVER_TYPE_CHECK.checked = false;
@@ -47,7 +51,9 @@ document.body.addEventListener('click', function(event) {
         showCards();
     }
 });
+//-------------------------------------------------------------
 
+//-------------------------------------------------------------
 function filterBaseOfBooks(booksBase) {
     let filteredBase = [...booksBase];
 
@@ -60,7 +66,9 @@ function filterBaseOfBooks(booksBase) {
 
     return filteredBase
 }
+//-------------------------------------------------------------
 
+//-------------------------------------------------------------
 function filterByLanguage(array, language) {
     return array.filter(element => element['language'] === language)
 }
@@ -68,7 +76,9 @@ function filterByLanguage(array, language) {
 function filterByCoverType(array, coverType) {
     return array.filter(element => element['coverType'] === coverType)
 }
+//-------------------------------------------------------------
 
+//-------------------------------------------------------------
 function showCards() {
     CARDS_WRAPPER.innerHTML = '';
     const arrayOfBooks = filterBaseOfBooks(booksBase);
@@ -86,3 +96,4 @@ function showCards() {
         CARDS_WRAPPER.appendChild(newCard.createCard())
     }
 };
+//-------------------------------------------------------------
