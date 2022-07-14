@@ -1,15 +1,36 @@
 import './global.css';
 
+import { listOfFilters } from './components/filter.js'
+import { filterProducts } from './components/filter.js'
+
 import { booksBase } from './components/booksBase.ts'
 
 // import booksBase from './components/booksBase.json' assert { type: 'json' };
 // import booksBase from './components/booksBase.json'
 // const booksBase = require('./components/booksBase.json');
 
+// const responce = await fetch('./components/booksBase.json');
+// const booksBase = await responce.json();
+
 const CARDS_WRAPPER = document.querySelector(".cards-wrapper");
 const FILTER_LANGUAGE_CHECK = document.querySelector("#languageFilter");
 const FILTER_COVER_TYPE_CHECK = document.querySelector("#coverTypeFilter");
 const FILTER_BUTTON = document.querySelector(".filter-button");
+
+function updateFilters() {
+    listOfFilters.coverType = false;
+    listOfFilters.language = false;
+    listOfFilters.category = false;
+
+    if (FILTER_LANGUAGE_CHECK.checked) {
+        listOfFilters.language = "English";
+    }
+    if (FILTER_COVER_TYPE_CHECK.checked) {
+        listOfFilters.coverType = "Paperback";
+    }
+
+    console.log(listOfFilters);
+}
 
 //-------------------------------------------------------------
 class BookCard {
@@ -54,34 +75,10 @@ document.body.addEventListener('click', function(event) {
 //-------------------------------------------------------------
 
 //-------------------------------------------------------------
-function filterBaseOfBooks(booksBase) {
-    let filteredBase = [...booksBase];
-
-    if (FILTER_LANGUAGE_CHECK.checked) {
-        filteredBase = filterByLanguage(filteredBase, "English");
-    }
-    if (FILTER_COVER_TYPE_CHECK.checked) {
-        filteredBase = filterByCoverType(filteredBase, "Paperback");
-    }
-
-    return filteredBase
-}
-//-------------------------------------------------------------
-
-//-------------------------------------------------------------
-function filterByLanguage(array, language) {
-    return array.filter(element => element['language'] === language)
-}
-
-function filterByCoverType(array, coverType) {
-    return array.filter(element => element['coverType'] === coverType)
-}
-//-------------------------------------------------------------
-
-//-------------------------------------------------------------
 function showCards() {
     CARDS_WRAPPER.innerHTML = '';
-    const arrayOfBooks = filterBaseOfBooks(booksBase);
+    updateFilters();
+    const arrayOfBooks = filterProducts(booksBase, listOfFilters);
 
     for (let i = 0; i < arrayOfBooks.length; i++) {
         let cardTitle = arrayOfBooks[i]["title"];

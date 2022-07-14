@@ -56,7 +56,7 @@ const baseConfig = {
                 test: /\.json$/,
                 type: 'asset/resource',
                 generator: {
-                    filename: 'components/[name][ext]',
+                    filename: './components/[name][ext]',
                 }
             },
             {
@@ -73,7 +73,16 @@ const baseConfig = {
     },
     resolve: {
         extensions: ['.ts', '.js'],
-    }
+    },
+    experiments: {
+        // asyncWebAssembly: true,
+        // buildHttp: true,
+        // layers: true,
+        // lazyCompilation: true,
+        // outputModule: true,
+        // syncWebAssembly: true,
+        topLevelAwait: true,
+      },
 }
 
 module.exports = ({ mode }) => {
