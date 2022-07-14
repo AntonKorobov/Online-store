@@ -1,9 +1,11 @@
 const path = require('path');
+const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const EslingPlugin = require('eslint-webpack-plugin');
 
-module.exports = {
+const baseConfig = {
     entry: {
         main: path.resolve(__dirname, './src/index')
     },
@@ -18,6 +20,7 @@ module.exports = {
             filename: 'index.html',
         }),
         new CleanWebpackPlugin(),
+        new EslingPlugin({ extensions: 'ts' }),
         new CopyWebpackPlugin({
             patterns: [
               { from: "src/assets", to: "assets" },
@@ -53,7 +56,7 @@ module.exports = {
                 test: /\.json$/,
                 type: 'asset/resource',
                 generator: {
-                    filename: 'assets/books_base/[name][ext]',
+                    filename: 'components/[name][ext]',
                 }
             },
             {
@@ -62,12 +65,23 @@ module.exports = {
                     'html-loader'
                 ]
             },
+            // {
+            //     test: /\.json$/,
+            //     use: ['json-loader'],
+            // },
         ],
     },
     resolve: {
         extensions: ['.ts', '.js'],
     }
 }
+
+module.exports = ({ mode }) => {
+    const isProductionMode = mode === 'prod';
+    const envConfig = isProductionMode ? require('./webpack.prod.config') : require('./webpack.dev.config');
+
+    return merge(baseConfig, envConfig);
+};
 
 // const { merge } = require('webpack-merge');
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -114,9 +128,3 @@ module.exports = {
 //     ],
 // };
 
-// module.exports = ({ mode }) => {
-//     const isProductionMode = mode === 'prod';
-//     const envConfig = isProductionMode ? require('./webpack.prod.config') : require('./webpack.dev.config');
-
-//     return merge(baseConfig, envConfig);
-// };

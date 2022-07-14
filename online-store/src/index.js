@@ -1,10 +1,10 @@
 import './global.css';
 
-import { showModule } from './components/filter'
+import { booksBase } from './components/booksBase.ts'
 
-import booksBase from './components/pets_base.json' assert { type: 'json' };
-
-showModule();
+// import booksBase from './components/booksBase.json' assert { type: 'json' };
+// import booksBase from './components/booksBase.json'
+// const booksBase = require('./components/booksBase.json');
 
 const CARDS_WRAPPER = document.querySelector(".cards-wrapper");
 const FILTER_LANGUAGE_CHECK = document.querySelector("#languageFilter");
