@@ -9,22 +9,73 @@
   <!-- <link rel="stylesheet" href="./global.css"> -->
 </head>
 
-<body>
-  <section class="cards-wrapper">
-  </section>
-  <ul class="filter-type">
-    <li>
-      <input class="filter" type="checkbox" name="" id="languageFilter">
-      <label for="languageFilter">Filter by language(Eng)</label>
-    </li>
-    <li>
-      <input class="filter" type="checkbox" name="" id="coverTypeFilter">
-      <label for="coverTypeFilter">Filter by type of cover(Paperback)</label>
-    </li>
-    <li>
-      <button class="filter-button">filter off</button>
-    </li>
-  </ul>
+<body class="body">
+  <header class="header">
+    <div class="header__container container">
+      <a href="#" class="header__title">
+        <h1>Online-store</h1>
+      </a>
+      <nav class="header__nav">
+        <ul class="header__nav__ul">
+          <li>
+            <a class="header__nav_a" href="#">Home</a>
+          </li>
+          <li>
+            <a class="header__nav_a" href="#">About</a>
+          </li>
+          <li>
+            <a class="header__nav_a" href="#">Products</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="header__cart">
+        <a href="#" class="cart-link">
+          <img class="cart__icon" src="./assets/shopping-bag.png" alt="cart">
+        </a>
+        <p class="cart__description">
+          purchases
+        </p>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    
+    <section class="search-section">
+      <div class="search-section__container container">
+        <form>
+          <input class="search-section__search-input" type="text" name="search" placeholder="Search..">
+        </form>
+      </div>
+    </section>
+
+    <section class="filters-section">
+      <div class="filters-section__container container"></div>
+    </section>
+
+    <section class="sort-section">
+      <div class="sort-section__container container"></div>
+    </section>
+    
+    <section class="products-section">
+      <div class="products-section__container container">
+      <section class="cards-wrapper">
+      </section>
+      <ul class="filter-type">
+        <li>
+          <input class="filter" type="checkbox" name="" id="languageFilter">
+          <label for="languageFilter">Filter by language(Eng)</label>
+        </li>
+        <li>
+          <input class="filter" type="checkbox" name="" id="coverTypeFilter">
+          <label for="coverTypeFilter">Filter by type of cover(Paperback)</label>
+        </li>
+        <li>
+          <button class="filter-button">filter off</button>
+        </li>
+      </ul>
+    </div>
+    </section>
+  </main>
   <!-- <script type="module" src="./index.js"></script> -->
 </body>
 

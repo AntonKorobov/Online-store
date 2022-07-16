@@ -3,6 +3,70 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+
+a {
+  text-decoration: none;
+
+}
+
+li {
+  list-style: none;
+}
+
+.body {
+  background-color: rgb(218, 218, 218);
+}
+
+.container {
+  background-color: white;
+  border: 2px solid rgb(182, 182, 182);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5px 40px;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__nav {
+  // color: black;
+  font-size: 1.5rem;
+}
+
+.header__nav__ul {
+  // width: 30%;
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.cart__icon {
+  width: 50px;
+}
+
+.cart__description {
+  text-align: center;
+}
+
+.search-section__search-input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('./assets/searchicon.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+}
+
 .cards-wrapper {
   width: 1000px;
   margin: 50px auto;
