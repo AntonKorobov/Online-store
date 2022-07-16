@@ -76,6 +76,17 @@ li {
   padding: 12px 20px 12px 40px;
 }
 
+.select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .cards-wrapper {
   width: 1000px;
   margin: 50px auto;

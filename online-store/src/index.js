@@ -18,9 +18,9 @@ const FILTER_COVER_TYPE_CHECK = document.querySelector("#coverTypeFilter");
 const FILTER_BUTTON = document.querySelector(".filter-button");
 
 function updateFilters() {
-    listOfFilters.coverType = false;
     listOfFilters.language = false;
     listOfFilters.category = false;
+    listOfFilters.coverType = false;
 
     if (FILTER_LANGUAGE_CHECK.checked) {
         listOfFilters.language = "English";
