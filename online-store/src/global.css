@@ -8,6 +8,11 @@ html {
   font-size: 62.5%;
 }
 
+.body {
+  font-size: 2rem;
+  background-color: #dadada;
+}
+
 a {
   text-decoration: none;
 }
@@ -16,16 +21,12 @@ li {
   list-style: none;
 }
 
-.body {
-  background-color: #dadada;
-}
-
 .container {
   background-color: white;
-  border: 2px solid #b6b6b6;
+  border: 2px solid #ccc;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 5px 40px;
+  padding: 10px 40px;
 }
 
 .header__container {
@@ -40,10 +41,6 @@ li {
           align-items: center;
 }
 
-.header__nav {
-  font-size: 1.5rem;
-}
-
 .header__nav__ul {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -54,12 +51,21 @@ li {
   gap: 50px;
 }
 
-.cart__icon {
-  width: 50px;
+.header__cart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.cart__description {
-  text-align: center;
+.cart__icon {
+  width: 50px;
 }
 
 .search-section__search-input {
@@ -81,10 +87,66 @@ li {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 4px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-size: 1.5rem;
+}
+
+.filter_category-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 3px auto;
+}
+
+.filter_category__checkbox-wrapper {
+  width: 33%;
+}
+
+.filter_category__checkbox {
+  display: block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 4px;
+  min-width: 12px;
+  min-height: 12px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.filter_category__checkbox_input {
+  position: absolute;
+  visibility: hidden;
+}
+
+.filter_category__checkbox_input:checked ~ .filter_category__checkbox {
+  text-decoration: underline;
+}
+
+.filters-section-button {
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  height: 50px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 1.5rem;
+}
+
+.filters-section-button:hover {
+  cursor: pointer;
+  background-color: #ccc;
+}
+
+.filters-section-button:active {
+  background-color: #3f3f3f;
 }
 
 .cards-wrapper {
@@ -125,24 +187,5 @@ li {
 
 .filter-type li {
   list-style: none;
-}
-
-.filter-button {
-  margin: 20px;
-  width: 150px;
-  height: 50px;
-  background-color: brown;
-  color: white;
-  font-size: 20px;
-}
-
-.filter-button:hover {
-  cursor: pointer;
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-}
-
-.filter-button:active {
-  background-color: #523838;
 }
 /*# sourceMappingURL=global.css.map */

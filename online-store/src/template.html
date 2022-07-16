@@ -50,54 +50,91 @@
 
     <section class="filters-section">
       <div class="filters-section__container container">
-        <h2 class="filters-section__h2">FILTERS</h2>
+        <h2 class="filters-section__h2 h2">FILTERS</h2>
         <div class="filters-wrapper">
-            <select class="filter_language select" id="language" name="country">
+            <select class="filter_language select" id="language" name="filter">
               <option value="" selected disabled hidden>Language</option>
               <option value="Russian">Russian</option>
               <option value="English">English</option>
               <option value="Spain">Spain</option>
             </select>
-            <select class="filter_category select" id="category" name="country">
-              <option value="" selected disabled hidden>Category</option>
-              <option value="Classics">Classics</option>
-              <option value="Science Fiction">Science Fiction</option>
-              <option value="Literary">Literary</option>
-              <option value="Psychological">Psychological</option>
-              <option value="Spain">Action & Adventure</option>
-              <option value="Political">Political</option>
-            </select>
-            <select class="filter_coverType select" id="coverType" name="country">
+            
+            <select class="filter_coverType select" id="coverType" name="filter">
               <option value="" selected disabled hidden>Cover type</option>
               <option value="Hardcover">Hardcover</option>
               <option value="Paperback">Paperback</option>
               <option value="Prebound">Prebound</option>
             </select>
+            <h2 class="filters-section__h2 h2">CATEGORY</h2>
+            <ul class="filter_category-wrapper">
+              <!-- <li>
+                <input class="filter" type="checkbox" name="" id="languageFilter">
+                <label for="languageFilter">Filter by language(Eng)</label>
+              </li>
+              <li>
+                <input class="filter" type="checkbox" name="" id="coverTypeFilter">
+                <label for="coverTypeFilter">Filter by type of cover(Paperback)</label>
+              </li> -->
+              <li class="filter_category__checkbox-wrapper">
+                <input class="filter_category__checkbox_input" type="checkbox" name="filter" id="filter_category__checkbox_input_All" checked>
+                <label for="filter_category__checkbox_input_All" class="filter_category__checkbox">All</label>
+              </li>
+              <li class="filter_category__checkbox-wrapper">
+                  <input class="filter_category__checkbox_input" type="checkbox" name="filter" id="filter_category__checkbox_input_Classics">
+                  <label for="filter_category__checkbox_input_Classics" class="filter_category__checkbox">Classics</label>
+              </li>
+              <li class="filter_category__checkbox-wrapper">
+                  <input class="filter_category__checkbox_input" type="checkbox" name="filter" id="filter_category__checkbox_input_Science_Fiction">
+                  <label for="filter_category__checkbox_input_Science_Fiction" class="filter_category__checkbox">Science Fiction</label>
+              </li>
+              <li class="filter_category__checkbox-wrapper">
+                  <input class="filter_category__checkbox_input" type="checkbox" name="filter" id="filter_category__checkbox_input_Literary">
+                  <label for="filter_category__checkbox_input_Literary" class="filter_category__checkbox">Literary</label>
+              </li>
+              <li class="filter_category__checkbox-wrapper">
+                  <input class="filter_category__checkbox_input" type="checkbox" name="filter" id="filter_category__checkbox_input_Psychological">
+                  <label for="filter_category__checkbox_input_Psychological" class="filter_category__checkbox">Psychological</label>
+              </li>
+              <li class="filter_category__checkbox-wrapper">
+                <input class="filter_category__checkbox_input" type="checkbox" name="filter" id="filter_category__checkbox_input_Political">
+                <label for="filter_category__checkbox_input_Political" class="filter_category__checkbox">Political</label>
+              </li>
+              <li class="filter_category__checkbox-wrapper">
+                <input class="filter_category__checkbox_input" type="checkbox" name="filter" id="filter_category__checkbox_input_Action-Adventure">
+                <label for="filter_category__checkbox_input_Action-Adventure" class="filter_category__checkbox">Action & Adventure</label>
+              </li>
+              <li class="filter_category__checkbox-wrapper">
+                <input class="filter_category__checkbox_input" type="checkbox" name="filter" id="filter_category__checkbox_input_Media_Tie-In">
+                <label for="filter_category__checkbox_input_Media_Tie-In" class="filter_category__checkbox">Media Tie-In</label>
+              </li>
+              <li class="filter_category__checkbox-wrapper">
+                <input class="filter_category__checkbox_input" type="checkbox" name="filter" id="filter_category__checkbox_input_Genetic-Engineering">
+                <label for="filter_category__checkbox_input_Genetic-Engineering" class="filter_category__checkbox">Genetic Engineering</label>
+              </li>
+            </ul>
+            <button class="filters-section-button">Clear Filters</button>
         </div>
       </div>
     </section>
 
     <section class="sort-section">
-      <div class="sort-section__container container"></div>
+      <div class="sort-section__container container">
+        <h2 class="sort-section__h2 h2">SORT</h2>
+        <div class="sort-wrapper">
+            <select class="sort_name select" id="name" name="sort">
+              <option value="Name-a-z" selected>Name(A-Z)</option>
+              <option value="Name-z-a">Name(Z-A)</option>
+              <option value="Price-lowest">Price(lowest)</option>
+              <option value="Price-highest">Price(highest)</option>
+            </select>
+        </div>
+      </div>
     </section>
     
     <section class="products-section">
-      <div class="products-section__container container">
+    <div class="products-section__container container">
       <section class="cards-wrapper">
       </section>
-      <ul class="filter-type">
-        <li>
-          <input class="filter" type="checkbox" name="" id="languageFilter">
-          <label for="languageFilter">Filter by language(Eng)</label>
-        </li>
-        <li>
-          <input class="filter" type="checkbox" name="" id="coverTypeFilter">
-          <label for="coverTypeFilter">Filter by type of cover(Paperback)</label>
-        </li>
-        <li>
-          <button class="filter-button">filter off</button>
-        </li>
-      </ul>
     </div>
     </section>
   </main>
