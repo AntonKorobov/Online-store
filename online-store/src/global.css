@@ -160,16 +160,15 @@ li {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   gap: 20px;
 }
 
 .card {
   width: 20%;
   height: 500px;
-  background-color: brown;
+  padding: 10px;
+  -webkit-box-shadow: 0 2px 4px #d1d1d1;
+          box-shadow: 0 2px 4px #d1d1d1;
 }
 
 .card .card_title {

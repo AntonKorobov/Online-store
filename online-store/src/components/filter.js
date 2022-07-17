@@ -1,6 +1,6 @@
 export const listOfFilters = {
     language: false,
-    category: false,
+    category: [],
     coverType: false,
 }
 
@@ -10,7 +10,8 @@ export function filterProducts(booksBase, listOfFilters) {
     if (listOfFilters.language) {
         filteredBase = filterByLanguage(filteredBase, listOfFilters.language);
     }
-    if (listOfFilters.category) {
+    if (listOfFilters.category.length > 0) {
+        console.log(listOfFilters.category.length);
         filteredBase = filterByCategory(filteredBase, listOfFilters.category);
     }
     if (listOfFilters.coverType) {
@@ -25,10 +26,10 @@ function filterByLanguage(array, language) {
     return array.filter(element => element['language'] === language)
 }
 
-function filterByCategory(array, category) {//Demo
+function filterByCategory(array, category) {
     return array.filter(element => {
         for (let i = 0; i < element['category'].length; i++) {
-            if( element['category'][i] === category) return true
+            if(category.indexOf(element['category'][i]) !== -1) return true
         }
         return false
     })

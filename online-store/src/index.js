@@ -15,19 +15,25 @@ import { booksBase } from './components/booksBase.ts'
 const CARDS_WRAPPER = document.querySelector(".cards-wrapper");
 const FILTER_LANGUAGE_CHECK = document.querySelector("#languageFilter");
 const FILTER_COVER_TYPE_CHECK = document.querySelector("#coverTypeFilter");
-const FILTER_BUTTON = document.querySelector(".filter-button");
+const FILTER_BUTTON = document.querySelector(".filters-section-button");
+const FilterCategoryClassic = document.querySelector("#filter_category__checkbox_input_Classics");
 
 function updateFilters() {
     listOfFilters.language = false;
-    listOfFilters.category = false;
+    // listOfFilters.category = [];//is possible?
+    // listOfFilters.category =listOfFilters.category.splice(0,listOfFilters.category.length)//delete all elements from array
+    listOfFilters.category.length = 0;
     listOfFilters.coverType = false;
 
-    if (FILTER_LANGUAGE_CHECK.checked) {
-        listOfFilters.language = "English";
+    if (FilterCategoryClassic.checked) {
+        listOfFilters.category.push(FilterCategoryClassic.value);
     }
-    if (FILTER_COVER_TYPE_CHECK.checked) {
-        listOfFilters.coverType = "Paperback";
-    }
+    // if (FILTER_LANGUAGE_CHECK.checked) {
+    //     listOfFilters.language = "English";
+    // }
+    // if (FILTER_COVER_TYPE_CHECK.checked) {
+    //     listOfFilters.coverType = "Paperback";
+    // }
 
     console.log(listOfFilters);
 }
@@ -68,7 +74,7 @@ FILTER_BUTTON.addEventListener('click', () => {
 })
 
 document.body.addEventListener('click', function(event) {
-    if (event.target.className === 'filter') {
+    if (event.target.className === 'filter_category__checkbox_input') {
         showCards();
     }
 });
