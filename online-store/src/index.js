@@ -13,12 +13,11 @@ import { booksBase } from './components/booksBase.ts'
 // const booksBase = await responce.json();
 
 const CARDS_WRAPPER = document.querySelector(".cards-wrapper");
-const FILTER_LANGUAGE_CHECK = document.querySelector("#languageFilter");
-const FILTER_COVER_TYPE_CHECK = document.querySelector("#coverTypeFilter");
 const FILTER_BUTTON = document.querySelector(".filters-section-button");
 
-// const FilterCategoryClassic = document.querySelector("#filter_category__checkbox_input_Classics");
-const listOfCheckbox = document.querySelectorAll('.filter_category__checkbox_input')
+const filterLanguageSelect = document.querySelector(".filter_language");
+const filterCoverTypeSelect = document.querySelector(".filter_coverType");
+const listOfCheckbox = document.querySelectorAll('.filter_category__checkbox_input');
 
 function updateFilters() {
     listOfFilters.language = false;
@@ -33,9 +32,9 @@ function updateFilters() {
         }
     });
     
-    // if (FILTER_LANGUAGE_CHECK.checked) {
-    //     listOfFilters.language = "English";
-    // }
+    if (filterLanguageSelect.value !== "") {
+        listOfFilters.language = filterLanguageSelect.value;
+    }
     console.log(listOfFilters);
 }
 
@@ -75,7 +74,7 @@ FILTER_BUTTON.addEventListener('click', () => {
 })
 
 document.body.addEventListener('click', function(event) {
-    if (event.target.className === 'filter_category__checkbox_input') {
+    if (event.target.className === 'filter_category__checkbox_input' || 'select') {
         showCards();
     }
 });
