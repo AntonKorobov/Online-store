@@ -11,7 +11,6 @@ export function filterProducts(booksBase, listOfFilters) {
         filteredBase = filterByLanguage(filteredBase, listOfFilters.language);
     }
     if (listOfFilters.category.length > 0) {
-        console.log(listOfFilters.category.length);
         filteredBase = filterByCategory(filteredBase, listOfFilters.category);
     }
     if (listOfFilters.coverType) {
@@ -28,10 +27,10 @@ function filterByLanguage(array, language) {
 
 function filterByCategory(array, category) {
     return array.filter(element => {
-        for (let i = 0; i < element['category'].length; i++) {
-            if(category.indexOf(element['category'][i]) !== -1) return true
+        for (let i = 0; i < category.length; i++) {
+            if(element['category'].indexOf(category[i]) === -1) return false
         }
-        return false
+        return true
     })
 }
 

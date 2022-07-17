@@ -141,7 +141,7 @@ li {
 }
 //------------------------------------------------
 .cards-wrapper {
-  width: 1000px;
+  width: 100%;
   margin: 50px auto;
   display: flex;
   flex-wrap: wrap;
@@ -151,7 +151,6 @@ li {
 
 .card {
   width: 20%;
-  height: 500px;
   padding: 10px;
     box-shadow: 0 2px 4px #d1d1d1;
   .card_title {
