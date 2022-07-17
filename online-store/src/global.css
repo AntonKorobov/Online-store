@@ -175,6 +175,10 @@ li {
   width: 100%;
 }
 
+.sorry-message {
+  font-size: 3rem;
+}
+
 .filter-type {
   width: 300px;
   margin: 50px auto;

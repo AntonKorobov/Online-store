@@ -23,6 +23,7 @@ const FILTER_BUTTON = document.querySelector(".filters-section-button");
 
 const searchInput = document.querySelector('.search-section__search-input');
 searchInput.select();
+// document.querySelector('.search-input-form').onsubmit = "return false";
 
 const filterLanguageSelect = document.querySelector(".filter_language");
 const filterCoverTypeSelect = document.querySelector(".filter_coverType");
@@ -96,6 +97,15 @@ showCards();
 //----------------EVENTS---------------------------------------
 getTypingTextValue();
 
+searchInput.addEventListener('input', (event) => {
+   if(event.target.value === '') {
+       console.log("Bam");
+       typedTextValue = '';
+       searchInput.value = '';
+       showCards();//!!!
+   }
+})
+
 FILTER_BUTTON.addEventListener('click', () => {
     filterLanguageSelect.selectedIndex = 0;
     filterCoverTypeSelect.selectedIndex = 0;
@@ -119,6 +129,8 @@ function showCards() {
     let arrayOfBooks = filterProducts(booksBase, listOfFilters);
     arrayOfBooks = sortProducts(arrayOfBooks, sortSelector.value);
     arrayOfBooks = showSearchResults(arrayOfBooks, typedTextValue);
+
+    if(arrayOfBooks.length === 0) CARDS_WRAPPER.innerHTML='<h2 class="sorry-message">Sorry, no results were found:(</h2>';
 
     for (let i = 0; i < arrayOfBooks.length; i++) {
         let cardTitle = arrayOfBooks[i]["title"];
