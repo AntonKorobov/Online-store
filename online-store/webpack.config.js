@@ -39,7 +39,7 @@ const baseConfig = {
                 use: ['style-loader', 'css-loader', 'sass-loader'],
             },
             {
-                test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+                test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
                 // use: [{
                 //     loader: 'file-loader',
                 //     options: {

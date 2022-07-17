@@ -216,4 +216,34 @@ li {
 .filter-type li {
   list-style: none;
 }
+
+.footer__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 50px;
+}
+
+.rss__logo {
+  display: inline-block;
+  height: 10rem;
+  width: 20rem;
+  background-image: url("./assets/rs_school_js.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.github__logo {
+  display: inline-block;
+  height: 10rem;
+  width: 10rem;
+  background-image: url("./assets/iconmonstr-github-2.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 /*# sourceMappingURL=global.css.map */
