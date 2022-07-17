@@ -22,6 +22,7 @@ const CARDS_WRAPPER = document.querySelector(".cards-wrapper");
 const FILTER_BUTTON = document.querySelector(".filters-section-button");
 
 const searchInput = document.querySelector('.search-section__search-input');
+searchInput.select();
 
 const filterLanguageSelect = document.querySelector(".filter_language");
 const filterCoverTypeSelect = document.querySelector(".filter_coverType");
@@ -132,4 +133,3 @@ function showCards() {
         CARDS_WRAPPER.appendChild(newCard.createCard())
     }
 };
-//-------------------------------------------------------------
