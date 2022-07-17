@@ -48,6 +48,7 @@ li {
 }
 
 .header__cart {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,6 +56,22 @@ li {
 
 .cart__icon {
   width: 50px;
+}
+
+.cart__counter {
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  padding: 5px;
+  border-radius: 1000rem;
+  background-color: #ccc;
+  // left: 50%;
+  // transform: translate(-50%, 0);
+}
+
+.show-element {
+  visibility: visible;
 }
 
 // .cart__description {
@@ -175,15 +192,28 @@ li {
 }
 
 .card {
+  position: relative;
   width: 20%;
   padding: 10px;
-    box-shadow: 0 2px 4px #d1d1d1;
+  box-shadow: 0 2px 4px #d1d1d1;
   .card_title {
     height: 70px;
   }
   .card_img {
     width: 100%;
   }
+}
+
+.card__click-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.buy-card {
+  box-shadow: 0 10px 10px #000000;
 }
 
 .sorry-message {

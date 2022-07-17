@@ -3,11 +3,14 @@ import './global.css';
 import { showSearchResults } from './components/search'
 
 let typedTextValue = '';
+let cardsIcons = document.querySelectorAll('.card__click-area');
 
-import{ sortProducts } from './components/sort'
+import{ sortProducts } from './components/sort.js'
 
 import { listOfFilters } from './components/filter.js'
 import { filterProducts } from './components/filter.js'
+
+import { addProductToCart } from './components/cart.js'
 
 import { booksBase } from './components/booksBase.ts'
 
@@ -18,16 +21,19 @@ import { booksBase } from './components/booksBase.ts'
 // const responce = await fetch('./components/booksBase.json');
 // const booksBase = await responce.json();
 
-const CARDS_WRAPPER = document.querySelector(".cards-wrapper");
+const cardsWrapper = document.querySelector(".cards-wrapper");
 const FILTER_BUTTON = document.querySelector(".filters-section-button");
 
 const searchInput = document.querySelector('.search-section__search-input');
 searchInput.select();
 // document.querySelector('.search-input-form').onsubmit = "return false";
 
+const filtersWrapper = document.querySelector(".filters-wrapper");
+const sortWrapper = document.querySelector(".sort-wrapper");
 const filterLanguageSelect = document.querySelector(".filter_language");
 const filterCoverTypeSelect = document.querySelector(".filter_coverType");
 const listOfCheckbox = document.querySelectorAll('.filter_category__checkbox_input');
+// const listOfSelect = document.querySelectorAll('.select');
 const listOfCheckboxAllInput = document.querySelector('#filter_category__checkbox_input_All');
 
 const sortSelector = document.querySelector(".sort_selector");
@@ -86,7 +92,8 @@ class BookCard {
                 <p class="card_author"><b>Author:</b> ${this.author}</p>
                 <p class="card_price"><b>Price:</b> ${this.price}</p>
                 <p class="card_cover-type"><b>Cover type:</b> ${this.coverType}</p>
-                <p class="card_language"><b>Language:</b> ${this.language}</p>`;
+                <p class="card_language"><b>Language:</b> ${this.language}</p>
+                <div class="card__click-area"></div>`;
         return card
     }
 }
@@ -99,12 +106,11 @@ getTypingTextValue();
 
 searchInput.addEventListener('input', (event) => {
    if(event.target.value === '') {
-       console.log("Bam");
        typedTextValue = '';
        searchInput.value = '';
        showCards();//!!!
    }
-})
+});
 
 FILTER_BUTTON.addEventListener('click', () => {
     filterLanguageSelect.selectedIndex = 0;
@@ -113,24 +119,49 @@ FILTER_BUTTON.addEventListener('click', () => {
     listOfCheckbox.forEach(element => {
         element.checked = false;
     })
-})
+    showCards();
+});
 
-document.body.addEventListener('click', function(event) {
-    if (event.target.className === 'filter_category__checkbox_input' || 'select') {
+filtersWrapper.addEventListener('click', (event) => {
+    if(event.target.value === 'All') {
+        listOfCheckbox.forEach(element => {
+            element.checked = false;
+        })
+    }
+    if(event.target.classList.contains('filter_category__checkbox_input')){
         showCards();
     }
 });
+
+filtersWrapper.addEventListener('change',(event) => {
+    if(event.target.classList.contains('select')){
+        showCards();
+    }
+}, true);//Is it OK?
+
+cardsWrapper.addEventListener('click',(event) => {
+    if(event.target.classList.contains('card__click-area')){
+        event.target.classList.toggle('buy-card');
+    }
+    // addProductToCart();
+});
+
+sortWrapper.addEventListener('change',(event) => {
+    if(event.target.classList.contains('select')){
+        showCards();
+    }
+}, true);//Is it OK?
 //-------------------------------------------------------------
 
 //-------------------------------------------------------------
 function showCards() {
-    CARDS_WRAPPER.innerHTML = '';
+    cardsWrapper.innerHTML = '';
     updateFilters();
     let arrayOfBooks = filterProducts(booksBase, listOfFilters);
     arrayOfBooks = sortProducts(arrayOfBooks, sortSelector.value);
     arrayOfBooks = showSearchResults(arrayOfBooks, typedTextValue);
 
-    if(arrayOfBooks.length === 0) CARDS_WRAPPER.innerHTML='<h2 class="sorry-message">Sorry, no results were found:(</h2>';
+    if(arrayOfBooks.length === 0) cardsWrapper.innerHTML='<h2 class="sorry-message">Sorry, no results were found:(</h2>';
 
     for (let i = 0; i < arrayOfBooks.length; i++) {
         let cardTitle = arrayOfBooks[i]["title"];
@@ -142,6 +173,6 @@ function showCards() {
 
         let newCard = new BookCard(cardTitle, cardAuthor, cardPrice, coverType, language, img);
 
-        CARDS_WRAPPER.appendChild(newCard.createCard())
+        cardsWrapper.appendChild(newCard.createCard())
     }
 };
