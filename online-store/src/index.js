@@ -2,8 +2,10 @@ import './global.css';
 
 import { showSearchResults } from './components/search'
 
+import { cartCounter } from './components/cart.js'
+
 let typedTextValue = '';
-let cardsIcons = document.querySelectorAll('.card__click-area');
+// let cardsIcons = document.querySelectorAll('.card__click-area');
 
 import{ sortProducts } from './components/sort.js'
 
@@ -20,6 +22,8 @@ import { booksBase } from './components/booksBase.ts'
 
 // const responce = await fetch('./components/booksBase.json');
 // const booksBase = await responce.json();
+
+const cardsToByCounter = document.querySelector(".cart__counter");
 
 const cardsWrapper = document.querySelector(".cards-wrapper");
 const FILTER_BUTTON = document.querySelector(".filters-section-button");
@@ -62,7 +66,7 @@ function updateFilters() {
     }else{
         listOfCheckboxAllInput.checked = false;
     }
-    console.log(listOfFilters);
+    // console.log(listOfFilters);
 }
 
 function getTypingTextValue(){
@@ -74,13 +78,14 @@ function getTypingTextValue(){
 
 //-------------------------------------------------------------
 class BookCard {
-    constructor(title, author, price, coverType, language, img) {
+    constructor(title, author, price, coverType, language, img, cardId) {
         this.title = title;
         this.author = author;
         this.price = price;
         this.coverType = coverType;
         this.language = language;
         this.img = img;
+        this.cardId = cardId;
     }
 
     createCard() {
@@ -93,7 +98,7 @@ class BookCard {
                 <p class="card_price"><b>Price:</b> ${this.price}</p>
                 <p class="card_cover-type"><b>Cover type:</b> ${this.coverType}</p>
                 <p class="card_language"><b>Language:</b> ${this.language}</p>
-                <div class="card__click-area"></div>`;
+                <div class="card__click-area" cardId="${this.cardId}"></div>`;
         return card
     }
 }
@@ -142,8 +147,14 @@ filtersWrapper.addEventListener('change',(event) => {
 cardsWrapper.addEventListener('click',(event) => {
     if(event.target.classList.contains('card__click-area')){
         event.target.classList.toggle('buy-card');
+        addProductToCart(event.target.getAttribute("cardId"));
+        cardsToByCounter.innerHTML = cartCounter;
+        if(cartCounter !== 0){
+            cardsToByCounter.classList.add('show-element');
+        }else{
+            cardsToByCounter.classList.remove('show-element');
+        }
     }
-    // addProductToCart();
 });
 
 sortWrapper.addEventListener('change',(event) => {
@@ -170,8 +181,9 @@ function showCards() {
         let coverType = arrayOfBooks[i]["coverType"];
         let language = arrayOfBooks[i]["language"];
         let img = arrayOfBooks[i]["img"];
+        let cardId = arrayOfBooks[i]["id"];
 
-        let newCard = new BookCard(cardTitle, cardAuthor, cardPrice, coverType, language, img);
+        let newCard = new BookCard(cardTitle, cardAuthor, cardPrice, coverType, language, img, cardId);
 
         cardsWrapper.appendChild(newCard.createCard())
     }

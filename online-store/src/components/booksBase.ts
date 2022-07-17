@@ -12,6 +12,7 @@ export const booksBase = [
         language: 'English',
         coverType: 'Hardcover',
         img: './assets/Atlas_Shrugged.jpg',
+        id: 1,
     },
     {
         title: '1984',
@@ -25,6 +26,7 @@ export const booksBase = [
         language: 'English',
         coverType: 'Hardcover',
         img: './assets/1984.jpg',
+        id: 2,
     },
     {
         title: 'Fahrenheit 451',
@@ -38,6 +40,7 @@ export const booksBase = [
         language: 'English',
         coverType: 'Paperback',
         img: './assets/Fahrenheit_451.jpg',
+        id: 3,
     },
     {
         title: 'Steppenwolf',
@@ -51,6 +54,7 @@ export const booksBase = [
         language: 'German',
         coverType: 'Paperback',
         img: './assets/Steppenwolf.jpg',
+        id: 4,
     },
     {
         title: 'The Twelve Chairs',
@@ -64,6 +68,7 @@ export const booksBase = [
         language: 'Russian',
         coverType: 'Paperback',
         img: './assets/The_Twelve_Chairs.jpg',
+        id: 5,
     },
     {
         title: 'City',
@@ -77,6 +82,7 @@ export const booksBase = [
         language: 'English',
         coverType: 'Paperback',
         img: './assets/City.jpg',
+        id: 6,
     },
     {
         title: 'The Sane Society',
@@ -90,6 +96,7 @@ export const booksBase = [
         language: 'English',
         coverType: 'Paperback',
         img: './assets/The_Sane_Society.jpg',
+        id: 7,
     },
     {
         title: 'The Three-Body Problem',
@@ -103,6 +110,7 @@ export const booksBase = [
         language: 'English',
         coverType: 'Paperback',
         img: './assets/The_Three-Body_Problem.jpg',
+        id: 8,
     },
     {
         title: "Cat's Cradle",
@@ -116,6 +124,7 @@ export const booksBase = [
         language: 'English',
         coverType: 'Prebound',
         img: './assets/Cats_cradle.jpg',
+        id: 9,
     },
     {
         title: 'Astrophysics for People in a Hurry',
@@ -129,6 +138,7 @@ export const booksBase = [
         language: 'English',
         coverType: 'Hardcover',
         img: './assets/Astrophysics_for_People_in_a_Hurry.jpg',
+        id: 10,
     },
     {
         title: 'Altered Carbon',
@@ -142,6 +152,7 @@ export const booksBase = [
         language: 'English',
         coverType: 'Paperback',
         img: './assets/Altered_Carbon.jpg',
+        id: 11,
     },
     {
         title: 'Sapiens. de Animales a Dioses',
@@ -155,6 +166,7 @@ export const booksBase = [
         language: 'Spanish',
         coverType: 'Paperback',
         img: './assets/Sapiens.jpg',
+        id: 12,
     },
     {
         title: 'Secondhand Time: The Last of the Soviets',
@@ -168,6 +180,7 @@ export const booksBase = [
         language: 'English',
         coverType: 'Paperback',
         img: './assets/Secondhand_Time.jpg',
+        id: 13,
     },
     {
         title: "Alindarka's Children: Things Will Be Bad",
@@ -181,6 +194,7 @@ export const booksBase = [
         language: 'English',
         coverType: 'Paperback',
         img: './assets/Alindarkas_Children.jpg',
+        id: 14,
     },
     {
         title: 'Martin Iden',
@@ -194,6 +208,7 @@ export const booksBase = [
         language: 'Russian',
         coverType: 'Paperback',
         img: './assets/Martin_Iden.jpg',
+        id: 15,
     },
     {
         title: "Howl's Moving Castle",
@@ -207,5 +222,6 @@ export const booksBase = [
         language: 'English',
         coverType: 'Paperback',
         img: './assets/Howls_Moving_Castle.jpg',
+        id: 16,
     },
 ];
