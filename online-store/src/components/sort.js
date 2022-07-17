@@ -1,4 +1,4 @@
-export function SortProducts(arrayOfProducts, typeOfSorting) {
+export function sortProducts(arrayOfProducts, typeOfSorting) {
     let filteredArray = [...arrayOfProducts];
 
     if(typeOfSorting === "Name-a-z"){

@@ -1,6 +1,10 @@
 import './global.css';
 
-import{ SortProducts } from './components/sort'
+import { showSearchResults } from './components/search'
+
+let typedTextValue = '';
+
+import{ sortProducts } from './components/sort'
 
 import { listOfFilters } from './components/filter.js'
 import { filterProducts } from './components/filter.js'
@@ -16,6 +20,8 @@ import { booksBase } from './components/booksBase.ts'
 
 const CARDS_WRAPPER = document.querySelector(".cards-wrapper");
 const FILTER_BUTTON = document.querySelector(".filters-section-button");
+
+const searchInput = document.querySelector('.search-section__search-input');
 
 const filterLanguageSelect = document.querySelector(".filter_language");
 const filterCoverTypeSelect = document.querySelector(".filter_coverType");
@@ -51,6 +57,13 @@ function updateFilters() {
     console.log(listOfFilters);
 }
 
+function getTypingTextValue(){
+    searchInput.addEventListener('keyup', (event)=>{
+        typedTextValue = event.target.value;
+        showCards()
+    })
+}
+
 //-------------------------------------------------------------
 class BookCard {
     constructor(title, author, price, coverType, language, img) {
@@ -79,7 +92,9 @@ class BookCard {
 
 showCards();
 
-//-------------------------------------------------------------
+//----------------EVENTS---------------------------------------
+getTypingTextValue();
+
 FILTER_BUTTON.addEventListener('click', () => {
     filterLanguageSelect.selectedIndex = 0;
     filterCoverTypeSelect.selectedIndex = 0;
@@ -101,7 +116,8 @@ function showCards() {
     CARDS_WRAPPER.innerHTML = '';
     updateFilters();
     let arrayOfBooks = filterProducts(booksBase, listOfFilters);
-    arrayOfBooks = SortProducts(arrayOfBooks, sortSelector.value);
+    arrayOfBooks = sortProducts(arrayOfBooks, sortSelector.value);
+    arrayOfBooks = showSearchResults(arrayOfBooks, typedTextValue);
 
     for (let i = 0; i < arrayOfBooks.length; i++) {
         let cardTitle = arrayOfBooks[i]["title"];
