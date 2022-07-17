@@ -1,5 +1,7 @@
 import './global.css';
 
+import{ SortProducts } from './components/sort'
+
 import { listOfFilters } from './components/filter.js'
 import { filterProducts } from './components/filter.js'
 
@@ -19,6 +21,8 @@ const filterLanguageSelect = document.querySelector(".filter_language");
 const filterCoverTypeSelect = document.querySelector(".filter_coverType");
 const listOfCheckbox = document.querySelectorAll('.filter_category__checkbox_input');
 const listOfCheckboxAllInput = document.querySelector('#filter_category__checkbox_input_All');
+
+const sortSelector = document.querySelector(".sort_selector");
 
 function updateFilters() {
     listOfFilters.language = false;
@@ -81,11 +85,8 @@ FILTER_BUTTON.addEventListener('click', () => {
     filterCoverTypeSelect.selectedIndex = 0;
 
     listOfCheckbox.forEach(element => {
-        if(element.value === 'All') element.checked = true;//!!!
-        else(element.checked = false);
+        element.checked = false;
     })
-
-    showCards();
 })
 
 document.body.addEventListener('click', function(event) {
@@ -99,7 +100,8 @@ document.body.addEventListener('click', function(event) {
 function showCards() {
     CARDS_WRAPPER.innerHTML = '';
     updateFilters();
-    const arrayOfBooks = filterProducts(booksBase, listOfFilters);
+    let arrayOfBooks = filterProducts(booksBase, listOfFilters);
+    arrayOfBooks = SortProducts(arrayOfBooks, sortSelector.value);
 
     for (let i = 0; i < arrayOfBooks.length; i++) {
         let cardTitle = arrayOfBooks[i]["title"];

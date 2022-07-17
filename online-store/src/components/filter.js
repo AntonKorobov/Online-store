@@ -4,20 +4,19 @@ export const listOfFilters = {
     coverType: false,
 }
 
-export function filterProducts(booksBase, listOfFilters) {
-    let filteredBase = [...booksBase];
+export function filterProducts(arrayOfProducts, listOfFilters) {
+    let filteredArray = [...arrayOfProducts];
     
     if (listOfFilters.language) {
-        filteredBase = filterByLanguage(filteredBase, listOfFilters.language);
+        filteredArray = filterByLanguage(filteredArray, listOfFilters.language);
     }
     if (listOfFilters.category.length > 0) {
-        filteredBase = filterByCategory(filteredBase, listOfFilters.category);
+        filteredArray = filterByCategory(filteredArray, listOfFilters.category);
     }
     if (listOfFilters.coverType) {
-        filteredBase = filterByCoverType(filteredBase, listOfFilters.coverType);
+        filteredArray = filterByCoverType(filteredArray, listOfFilters.coverType);
     }
-
-    return filteredBase
+    return filteredArray
 }
 
 //-------------------------------------------------------------
