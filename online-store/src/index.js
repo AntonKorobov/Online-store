@@ -18,6 +18,7 @@ const FILTER_BUTTON = document.querySelector(".filters-section-button");
 const filterLanguageSelect = document.querySelector(".filter_language");
 const filterCoverTypeSelect = document.querySelector(".filter_coverType");
 const listOfCheckbox = document.querySelectorAll('.filter_category__checkbox_input');
+const listOfCheckboxAllInput = document.querySelector('#filter_category__checkbox_input_All');
 
 function updateFilters() {
     listOfFilters.language = false;
@@ -27,7 +28,7 @@ function updateFilters() {
     listOfFilters.coverType = false;
 
     listOfCheckbox.forEach(element => {
-        if(element.checked === true){
+        if((element.checked === true)&&(element.value !== "All")){
             listOfFilters.category.push(element.value);
         }
     });
@@ -35,9 +36,13 @@ function updateFilters() {
     if (filterLanguageSelect.value !== "") {
         listOfFilters.language = filterLanguageSelect.value;
     }
-
     if (filterCoverTypeSelect.value !== "") {
         listOfFilters.coverType = filterCoverTypeSelect.value;
+    }
+    if(listOfFilters.category.length === 0){
+        listOfCheckboxAllInput.checked = true; //default value
+    }else{
+        listOfCheckboxAllInput.checked = false;
     }
     console.log(listOfFilters);
 }
@@ -76,7 +81,7 @@ FILTER_BUTTON.addEventListener('click', () => {
     filterCoverTypeSelect.selectedIndex = 0;
 
     listOfCheckbox.forEach(element => {
-        if(element.value === 'All') element.checked = true;
+        if(element.value === 'All') element.checked = true;//!!!
         else(element.checked = false);
     })
 
