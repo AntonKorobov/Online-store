@@ -27,7 +27,7 @@ function updateFilters() {
     listOfFilters.coverType = false;
 
     listOfCheckbox.forEach(element => {
-        if((element.checked === true)&&(element.value !== "All")){
+        if(element.checked === true){
             listOfFilters.category.push(element.value);
         }
     });
@@ -72,8 +72,14 @@ showCards();
 
 //-------------------------------------------------------------
 FILTER_BUTTON.addEventListener('click', () => {
-    FILTER_LANGUAGE_CHECK.checked = false;
-    FILTER_COVER_TYPE_CHECK.checked = false;
+    filterLanguageSelect.selectedIndex = 0;
+    filterCoverTypeSelect.selectedIndex = 0;
+
+    listOfCheckbox.forEach(element => {
+        if(element.value === 'All') element.checked = true;
+        else(element.checked = false);
+    })
+
     showCards();
 })
 

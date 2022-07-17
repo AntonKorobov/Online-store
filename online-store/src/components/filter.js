@@ -26,6 +26,7 @@ function filterByLanguage(array, language) {
 }
 
 function filterByCategory(array, category) {
+    if(category[0] === 'All') return array;
     return array.filter(element => {
         for (let i = 0; i < category.length; i++) {
             if(element['category'].indexOf(category[i]) === -1) return false
