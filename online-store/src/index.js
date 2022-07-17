@@ -35,6 +35,10 @@ function updateFilters() {
     if (filterLanguageSelect.value !== "") {
         listOfFilters.language = filterLanguageSelect.value;
     }
+
+    if (filterCoverTypeSelect.value !== "") {
+        listOfFilters.coverType = filterCoverTypeSelect.value;
+    }
     console.log(listOfFilters);
 }
 
