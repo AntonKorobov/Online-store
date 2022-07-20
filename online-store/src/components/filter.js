@@ -27,10 +27,11 @@ function filterByLanguage(array, language) {
 function filterByCategory(array, category) {
     if(category.length === 0) return array;
     return array.filter(element => {
+        let categoryCounter = 0;
         for (let i = 0; i < category.length; i++) {
-            if(element['category'].indexOf(category[i]) === -1) return false
+            if(element['category'].indexOf(category[i]) !== -1) return true
         }
-        return true
+        return false
     })
 }
 

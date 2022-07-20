@@ -47,13 +47,30 @@ const listOfCheckboxAllInput = document.querySelector('#filter_category__checkbo
 
 const sortSelector = document.querySelector(".sort_selector");
 
+function setFilters() {
+    let listOfFiltersData = JSON.parse(localStorage.getItem("listOfFiltersData")) || null;
+    console.log(listOfFiltersData);
+    console.log(localStorage);
+    if(listOfFiltersData !== null){
+        filterLanguageSelect.value = listOfFiltersData.language;
+        filterCoverTypeSelect.value = listOfFiltersData.coverType;
+        listOfFiltersData.category.forEach(element => {
+            listOfCheckbox.forEach(filterName => {
+                if(filterName.value === element){
+                    filterName.checked = true;
+                };
+            });
+        });
+    }
+}
+
 function updateFilters() {
-    listOfFilters.language = false;
+    listOfFilters.language = '';
     listOfFilters.category.length = 0;
-    listOfFilters.coverType = false;
+    listOfFilters.coverType = '';
 
     listOfCheckbox.forEach(element => {
-        if((element.checked === true)&&(element.value !== "All")){
+        if((element.checked === true)&&(element.value !== "All")) {
             listOfFilters.category.push(element.value);
         }
     });
@@ -64,12 +81,14 @@ function updateFilters() {
     if (filterCoverTypeSelect.value !== "") {
         listOfFilters.coverType = filterCoverTypeSelect.value;
     }
-    if(listOfFilters.category.length === 0){
+    if(listOfFilters.category.length === 0) {
         listOfCheckboxAllInput.checked = true; //default value
     }else{
         listOfCheckboxAllInput.checked = false;
     }
-    // console.log(listOfFilters);
+
+    //save in localStorage
+    localStorage.setItem("listOfFiltersData", JSON.stringify(listOfFilters));
 }
 
 function getTypingTextValue(){
@@ -108,12 +127,15 @@ class BookCard {
 }
 //-------------------------------------------------------------
 
+setFilters();
 showCards();
 updateCartCounter();
 
 //----------------EVENTS---------------------------------------
 resetSettingsButton.addEventListener('click', () => {
     localStorage.clear();
+    document.location.reload();
+    // showCards();
 })
 
 getTypingTextValue();
@@ -158,7 +180,6 @@ cardsWrapper.addEventListener('click',(event) => {
         event.target.classList.toggle('buy-card');
         addProductToCart(event.target.getAttribute("cardId"));
     }
-    console.log(cartCounter);
     updateCartCounter();
 });
 
@@ -172,6 +193,7 @@ sortWrapper.addEventListener('change',(event) => {
 //-------------------------------------------------------------
 function showCards() {
     cardsWrapper.innerHTML = '';
+
     updateFilters();
 
     let arrayOfBooks = filterProducts(booksBase, listOfFilters);
@@ -190,7 +212,6 @@ function showCards() {
         let cardId = arrayOfBooks[i]["id"];
         let cardClass = "";
     if(cartData !== 0) {
-        console.log(cartData.indexOf(arrayOfBooks[i]["id"]));
         if(cartData.indexOf(arrayOfBooks[i]["id"]) !== -1){
             cardClass = 'buy-card';
         }
