@@ -49,11 +49,12 @@ const sortSelector = document.querySelector(".sort_selector");
 
 function setFilters() {
     let listOfFiltersData = JSON.parse(localStorage.getItem("listOfFiltersData")) || null;
-    console.log(listOfFiltersData);
-    console.log(localStorage);
+    // console.log(listOfFiltersData);
+    // console.log(localStorage);
     if(listOfFiltersData !== null){
         filterLanguageSelect.value = listOfFiltersData.language;
         filterCoverTypeSelect.value = listOfFiltersData.coverType;
+        sortSelector.value = listOfFiltersData.sortType;
         listOfFiltersData.category.forEach(element => {
             listOfCheckbox.forEach(filterName => {
                 if(filterName.value === element){
@@ -68,6 +69,7 @@ function updateFilters() {
     listOfFilters.language = '';
     listOfFilters.category.length = 0;
     listOfFilters.coverType = '';
+    listOfFilters.sortType = '';
 
     listOfCheckbox.forEach(element => {
         if((element.checked === true)&&(element.value !== "All")) {
@@ -86,6 +88,8 @@ function updateFilters() {
     }else{
         listOfCheckboxAllInput.checked = false;
     }
+
+    listOfFilters.sortType = sortSelector.value;
 
     //save in localStorage
     localStorage.setItem("listOfFiltersData", JSON.stringify(listOfFilters));
