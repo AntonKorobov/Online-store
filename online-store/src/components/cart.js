@@ -1,27 +1,20 @@
-export let cart = {};
-export let cartCounter = 0;
+export let cartData = JSON.parse(localStorage.getItem("cartData")) || [];
+export let cartCounter = cartData.length;
 
 export function addProductToCart(productProperty) {
-    // let id = product['Id'];
     let id = productProperty;
 
-    if (id in cart) {
-        delete cart[id].id
-        cartCounter--;
+    let search = cartData.indexOf(id);
+
+    if (search === -1) {
+        cartData.push(id);
     } else {
-        let cartItem = {
-            id: id,
-        };
-        cart[id] = cartItem
-        console.log(cart);
-        cartCounter++;
+        cartData[search] = 0;
+        cartData = cartData.filter((element) => element !== 0);
     }
 
-    localStorage.setItem("cart", JSON.stringify(cart));
-    updateCart();
-}
-    
-function updateCart() {
-    localStorage.setItem("count", cartCounter);
-    console.log(cartCounter);
+    cartCounter = cartData.length;
+
+    // console.log(cartData);
+    localStorage.setItem("cartData", JSON.stringify(cartData));
 }

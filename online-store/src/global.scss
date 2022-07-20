@@ -35,10 +35,6 @@ li {
   justify-content: space-between;
   align-items: center;
 }
-.header__nav {
-  // color: black;
-  // font-size: 2rem;
-}
 
 .header__nav__ul {
   // width: 30%;
@@ -79,10 +75,6 @@ li {
   visibility: visible;
 }
 
-// .cart__description {
-//   text-align: center;
-// }
-
 .search-section__search-input {
   width: 100%;
   box-sizing: border-box;
@@ -96,31 +88,6 @@ li {
   padding: 12px 20px 12px 40px;
 }
 
-// input[type="search"]::-webkit-search-cancel-button{
-//   width: 10rem;
-// }
-
-// .search-section-wrapper {
-//   position: relative;
-// }
-
-// .clear-search-input-button {
-//   width: 3rem;
-//   position:absolute;
-//   right: 0.7rem;
-//   top: 0.9rem;
-//   // background-image: "./assets/close-button.png";
-//   // background-repeat: no-repeat;
-//   // background-size: 3rem;
-//   transition: all 1s;
-//   &:hover {
-//     cursor: pointer;
-//   }
-//   &:active {
-//     transform: rotate(180);
-//   }
-// }
-
 .select {
   width: 100%;
   padding: 12px 20px;
@@ -131,10 +98,6 @@ li {
   box-sizing: border-box;
   font-size: 1.5rem;
 }
-//------------------------------------------------
-// .filters-wrapper {
-
-// }
 
 .filter_category-wrapper {
   display: flex;
@@ -156,7 +119,6 @@ li {
   transition: all 0.2s;
   cursor: pointer;
   text-decoration: none;
-  
 }
 
 .filter_category__checkbox_input {
@@ -168,7 +130,7 @@ li {
   text-decoration: underline;
 }
 
-.filters-section-button {
+.button {
   display: block;
   margin: 0 auto;
   width: 150px;
@@ -218,7 +180,12 @@ li {
 }
 
 .buy-card {
-  box-shadow: 0 10px 10px #000000;
+  // box-shadow: 0 10px 10px #000000;
+  background-color: rgba($color: #ccc, $alpha: 0.5);
+  background-image: url('./assets/shopping-bag.png');
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .sorry-message {
