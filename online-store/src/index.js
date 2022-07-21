@@ -182,11 +182,11 @@ function showCards() {
 
 function updateCartCounter() {
     cardsToBuyCounter.innerHTML = cartCounter;
-        if(cartCounter !== 0){
-            cardsToBuyCounter.classList.add('cart__counter_visible');
-        }else{
-            cardsToBuyCounter.classList.remove('cart__counter_visible');
-        }
+    if(cartCounter !== 0){
+        cardsToBuyCounter.classList.add('cart__counter_visible');
+    }else{
+        cardsToBuyCounter.classList.remove('cart__counter_visible');
+    }
 }
 //-------------------------------------------------------------
 
@@ -194,7 +194,6 @@ function updateCartCounter() {
 resetSettingsButton.addEventListener('click', () => {
     localStorage.clear();
     document.location.reload();
-    // showCards();
 })
 
 getTypingTextValue();
@@ -236,7 +235,11 @@ filtersWrapper.addEventListener('change',(event) => {
 
 cardsWrapper.addEventListener('click',(event) => {
     if(event.target.classList.contains('card_click-area')){
-        event.target.classList.toggle('card_click-area_buy');
+        if(cartCounter === 20) {
+            event.target.classList.remove('card_click-area_buy');
+        }else{
+            event.target.classList.toggle('card_click-area_buy');
+        }
         addProductToCart(event.target.getAttribute("data-cardId"));
     }
     updateCartCounter();
