@@ -1,15 +1,14 @@
 import './global.css';
 
+const filterCategoryWrapper = document.querySelector(".filter-category__wrapper");
+createCategoryCheckbox();//create HTML
+
 import { showSearchResults } from './components/search'
 
 import { cartCounter } from './components/cart.js'
 import { cartData } from './components/cart.js'
-// let cartData = JSON.parse(localStorage.getItem("data")) || [];
-    // console.log(cartData);
-
 
 let typedTextValue = '';
-// let cardsIcons = document.querySelectorAll('.card__click-area');
 
 import{ sortProducts } from './components/sort.js'
 
@@ -33,24 +32,58 @@ const cardsWrapper = document.querySelector(".cards-wrapper");
 const clearFiltersButton = document.querySelector(".clear-filters-button");
 const resetSettingsButton = document.querySelector(".reset-settings-button");
 
-const searchInput = document.querySelector('.search-section__search-input');
+const searchInput = document.querySelector('.search-form__input');
 searchInput.select();
 // document.querySelector('.search-input-form').onsubmit = "return false";
 
 const filtersWrapper = document.querySelector(".filters-wrapper");
 const sortWrapper = document.querySelector(".sort-wrapper");
-const filterLanguageSelect = document.querySelector(".filter_language");
-const filterCoverTypeSelect = document.querySelector(".filter_coverType");
-const listOfCheckbox = document.querySelectorAll('.filter_category__checkbox_input');
+const filterLanguageSelect = document.querySelector(".filter-language");
+const filterCoverTypeSelect = document.querySelector(".filter-coverType");
+const listOfCheckbox = document.querySelectorAll('.filter-category__checkbox-input');
 
-const listOfCheckboxAllInput = document.querySelector('#filter_category__checkbox_input_All');
+const listOfCheckboxAllInput = document.querySelector('#filter-category__checkbox-input-All');
 
 const sortSelector = document.querySelector(".sort_selector");
 
+//-------------------------------------------------------------
+class BookCard {
+    constructor(title, author, price, coverType, language, img, cardId, cardClass) {
+        this.title = title;
+        this.author = author;
+        this.price = price;
+        this.coverType = coverType;
+        this.language = language;
+        this.img = img;
+        this.cardId = cardId;
+        this.cardClass = cardClass;
+    }
+
+    createCard() {
+        let card = document.createElement("div");
+        card.classList.add("card");
+        card.innerHTML = `
+                <h2 class="card_title">${this.title}</h2>
+                <img class="card_img" src="${this.img}" alt="">
+                <div class="card_description">
+                    <p class="card_author"><b>Author:</b> ${this.author}</p>
+                    <p class="card_price"><b>Price:</b> ${this.price}</p>
+                    <p class="card_cover-type"><b>Cover type:</b> ${this.coverType}</p>
+                    <p class="card_language"><b>Language:</b> ${this.language}</p>
+                    <div class="card_click-area ${this.cardClass}" data-cardId="${this.cardId}"></div>
+                </div>`;
+        return card
+    }
+}
+//-------------------------------------------------------------
+
+setFilters();
+showCards();
+updateCartCounter();
+
+//-------------------------------------------------------------
 function setFilters() {
     let listOfFiltersData = JSON.parse(localStorage.getItem("listOfFiltersData")) || null;
-    // console.log(listOfFiltersData);
-    // console.log(localStorage);
     if(listOfFiltersData !== null){
         filterLanguageSelect.value = listOfFiltersData.language;
         filterCoverTypeSelect.value = listOfFiltersData.coverType;
@@ -102,38 +135,60 @@ function getTypingTextValue(){
     })
 }
 
-//-------------------------------------------------------------
-class BookCard {
-    constructor(title, author, price, coverType, language, img, cardId, cardClass) {
-        this.title = title;
-        this.author = author;
-        this.price = price;
-        this.coverType = coverType;
-        this.language = language;
-        this.img = img;
-        this.cardId = cardId;
-        this.cardClass = cardClass;
+function createCategoryCheckbox() {
+    const arrayOfCategory = ['All', 'Classics','Science Fiction', 'Literary', 'Psychological', 'Political', 'Action & Adventure', 'Media Tie-In', 'Genetic Engineering'];
+
+    arrayOfCategory.forEach(element => {
+        let categoryCheckbox = document.createElement("li");
+        categoryCheckbox.classList.add("filter-category__checkbox-wrapper");
+        categoryCheckbox.innerHTML = ` 
+            <input value="${element}" class="filter-category__checkbox-input" type="checkbox" name="filter" id="filter-category__checkbox-input-${element}">
+            <label for="filter-category__checkbox-input-${element}" class="filter-category__checkbox-label">${element}</label>`
+        filterCategoryWrapper.appendChild(categoryCheckbox)
+    });
+}
+
+function showCards() {
+    cardsWrapper.innerHTML = '';
+
+    updateFilters();
+
+    let arrayOfBooks = filterProducts(booksBase, listOfFilters);
+    arrayOfBooks = sortProducts(arrayOfBooks, sortSelector.value);
+    arrayOfBooks = showSearchResults(arrayOfBooks, typedTextValue);
+
+    if(arrayOfBooks.length === 0) cardsWrapper.innerHTML='<h2 class="sorry-message">Sorry, no results were found:(</h2>';
+
+    for (let i = 0; i < arrayOfBooks.length; i++) {
+        let cardTitle = arrayOfBooks[i]["title"];
+        let cardAuthor = arrayOfBooks[i]["author"];
+        let cardPrice = arrayOfBooks[i]["price"];
+        let coverType = arrayOfBooks[i]["coverType"];
+        let language = arrayOfBooks[i]["language"];
+        let img = arrayOfBooks[i]["img"];
+        let cardId = arrayOfBooks[i]["id"];
+        let cardClass = "";
+    if(cartData !== 0) {
+        if(cartData.indexOf(arrayOfBooks[i]["id"]) !== -1){
+            cardClass = 'card_click-area_buy';
+        }
     }
 
-    createCard() {
-        let card = document.createElement("div");
-        card.classList.add("card");
-        card.innerHTML = `
-                <h2 class="card_title">${this.title}</h2>
-                <img class="card_img" src="${this.img}" alt="">
-                <p class="card_author"><b>Author:</b> ${this.author}</p>
-                <p class="card_price"><b>Price:</b> ${this.price}</p>
-                <p class="card_cover-type"><b>Cover type:</b> ${this.coverType}</p>
-                <p class="card_language"><b>Language:</b> ${this.language}</p>
-                <div class="card__click-area ${this.cardClass}" cardId="${this.cardId}"></div>`;
-        return card
+    let newCard = new BookCard(cardTitle, cardAuthor, cardPrice, coverType, language, img, cardId, cardClass);
+
+    cardsWrapper.appendChild(newCard.createCard())
     }
+};
+
+function updateCartCounter() {
+    cardsToBuyCounter.innerHTML = cartCounter;
+        if(cartCounter !== 0){
+            cardsToBuyCounter.classList.add('cart__counter_visible');
+        }else{
+            cardsToBuyCounter.classList.remove('cart__counter_visible');
+        }
 }
 //-------------------------------------------------------------
-
-setFilters();
-showCards();
-updateCartCounter();
 
 //----------------EVENTS---------------------------------------
 resetSettingsButton.addEventListener('click', () => {
@@ -168,7 +223,7 @@ filtersWrapper.addEventListener('click', (event) => {
             element.checked = false;
         })
     }
-    if(event.target.classList.contains('filter_category__checkbox_input')){
+    if(event.target.classList.contains('filter-category__checkbox-input')){
         showCards();
     }
 });
@@ -180,9 +235,9 @@ filtersWrapper.addEventListener('change',(event) => {
 }, true);
 
 cardsWrapper.addEventListener('click',(event) => {
-    if(event.target.classList.contains('card__click-area')){
-        event.target.classList.toggle('buy-card');
-        addProductToCart(event.target.getAttribute("cardId"));
+    if(event.target.classList.contains('card_click-area')){
+        event.target.classList.toggle('card_click-area_buy');
+        addProductToCart(event.target.getAttribute("data-cardId"));
     }
     updateCartCounter();
 });
@@ -193,45 +248,3 @@ sortWrapper.addEventListener('change',(event) => {
     }
 }, true);
 //-------------------------------------------------------------
-
-//-------------------------------------------------------------
-function showCards() {
-    cardsWrapper.innerHTML = '';
-
-    updateFilters();
-
-    let arrayOfBooks = filterProducts(booksBase, listOfFilters);
-    arrayOfBooks = sortProducts(arrayOfBooks, sortSelector.value);
-    arrayOfBooks = showSearchResults(arrayOfBooks, typedTextValue);
-
-    if(arrayOfBooks.length === 0) cardsWrapper.innerHTML='<h2 class="sorry-message">Sorry, no results were found:(</h2>';
-
-    for (let i = 0; i < arrayOfBooks.length; i++) {
-        let cardTitle = arrayOfBooks[i]["title"];
-        let cardAuthor = arrayOfBooks[i]["author"];
-        let cardPrice = arrayOfBooks[i]["price"];
-        let coverType = arrayOfBooks[i]["coverType"];
-        let language = arrayOfBooks[i]["language"];
-        let img = arrayOfBooks[i]["img"];
-        let cardId = arrayOfBooks[i]["id"];
-        let cardClass = "";
-    if(cartData !== 0) {
-        if(cartData.indexOf(arrayOfBooks[i]["id"]) !== -1){
-            cardClass = 'buy-card';
-        }
-    }
-
-    let newCard = new BookCard(cardTitle, cardAuthor, cardPrice, coverType, language, img, cardId, cardClass);
-
-    cardsWrapper.appendChild(newCard.createCard())
-    }
-};
-
-function updateCartCounter() {
-    cardsToBuyCounter.innerHTML = cartCounter;
-        if(cartCounter !== 0){
-            cardsToBuyCounter.classList.add('show-element');
-        }else{
-            cardsToBuyCounter.classList.remove('show-element');
-        }
-}

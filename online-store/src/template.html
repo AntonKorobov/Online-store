@@ -11,37 +11,37 @@
 
 <body class="body">
   <header class="header">
-    <div class="header__container container">
-      <a href="#" class="header__title">
-        <h1>Online-store</h1>
-      </a>
-      <nav class="header__nav">
-        <ul class="header__nav__ul">
-          <li>
-            <a class="header__nav_a" href="#">Home</a>
-          </li>
-          <li>
-            <a class="header__nav_a" href="#">About</a>
-          </li>
-          <li>
-            <a class="header__nav_a" href="#">Products</a>
-          </li>
-        </ul>
-      </nav>
-      <div class="header__cart">
-        <a href="#" class="cart-link">
-          <img class="cart__icon" src="./assets/shopping-bag.png" alt="cart">
-          <div class="cart__counter"></div>
+      <div class="header__container container">
+        <a href="#" class="title">
+          <h1>Online-store</h1>
         </a>
+        <div class="header__cart cart">
+          <a href="#" class="cart__link">
+            <img class="cart__icon" src="./assets/shopping-bag.png" alt="cart">
+            <div class="cart__counter"></div>
+          </a>
+        </div>
+        <nav class="header__nav navigation">
+          <ul class="navigation__list">
+            <li class="navigation__item">
+              <a class="navigation__link" href="#">Home</a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="#">About</a>
+            </li>
+            <li class="navigation__list">
+              <a class="navigation__link" href="#">Products</a>
+            </li>
+          </ul>
+        </nav>
       </div>
-    </div>
   </header>
   <main class="main">
     
     <section class="search-section">
       <div class="search-section__container container">
-        <form class="search-input-form" onsubmit = "return false">
-          <input class="search-section__search-input" type="search" placeholder="Search.." value="" autocomplete="off">
+        <form class="search-form" onsubmit = "return false">
+          <input class="search-form__input" type="search" placeholder="Search.." value="" autocomplete="off">
         </form>
       </div>
     </section>
@@ -50,58 +50,23 @@
       <div class="filters-section__container container">
         <h2 class="filters-section__h2 h2">FILTERS</h2>
         <div class="filters-wrapper">
-            <select class="filter_language select" id="language" name="filter">
-              <option value="" selected disabled hidden>Language</option>
-              <option value="Russian">Russian</option>
-              <option value="English">English</option>
-              <option value="Spanish">Spanish</option>
-              <option value="German">German</option>
+            <select class="filter-language select" id="language" name="filter">
+              <option class="select_option" value="" selected disabled hidden>Language</option>
+              <option class="select_option" value="Russian">Russian</option>
+              <option class="select_option" value="English">English</option>
+              <option class="select_option" value="Spanish">Spanish</option>
+              <option class="select_option" value="German">German</option>
             </select>
 
-            <select class="filter_coverType select" id="coverType" name="filter">
-              <option value="" selected disabled hidden>Cover type</option>
-              <option value="Hardcover">Hardcover</option>
-              <option value="Paperback">Paperback</option>
-              <option value="Prebound">Prebound</option>
+            <select class="filter-coverType select" id="coverType" name="filter">
+              <option class="select_option" value="" selected disabled hidden>Cover type</option>
+              <option class="select_option" value="Hardcover">Hardcover</option>
+              <option class="select_option" value="Paperback">Paperback</option>
+              <option class="select_option" value="Prebound">Prebound</option>
             </select>
             <h2 class="filters-section__h2 h2">CATEGORY</h2>
-            <ul class="filter_category-wrapper">
-              <li class="filter_category__checkbox-wrapper">
-                <input value="All" class="filter_category__checkbox_input" type="checkbox" name="filter" id="filter_category__checkbox_input_All" checked>
-                <label for="filter_category__checkbox_input_All" class="filter_category__checkbox">All</label>
-              </li>
-              <li class="filter_category__checkbox-wrapper">
-                  <input value="Classics" class="filter_category__checkbox_input" type="checkbox" name="filter" id="filter_category__checkbox_input_Classics">
-                  <label for="filter_category__checkbox_input_Classics" class="filter_category__checkbox">Classics</label>
-              </li>
-              <li class="filter_category__checkbox-wrapper">
-                  <input value="Science Fiction" class="filter_category__checkbox_input" type="checkbox" name="filter" id="filter_category__checkbox_input_Science_Fiction">
-                  <label for="filter_category__checkbox_input_Science_Fiction" class="filter_category__checkbox">Science Fiction</label>
-              </li>
-              <li class="filter_category__checkbox-wrapper">
-                  <input value="Literary" class="filter_category__checkbox_input" type="checkbox" name="filter" id="filter_category__checkbox_input_Literary">
-                  <label for="filter_category__checkbox_input_Literary" class="filter_category__checkbox">Literary</label>
-              </li>
-              <li class="filter_category__checkbox-wrapper">
-                  <input value="Psychological" class="filter_category__checkbox_input" type="checkbox" name="filter" id="filter_category__checkbox_input_Psychological">
-                  <label for="filter_category__checkbox_input_Psychological" class="filter_category__checkbox">Psychological</label>
-              </li>
-              <li class="filter_category__checkbox-wrapper">
-                <input value="Political" class="filter_category__checkbox_input" type="checkbox" name="filter" id="filter_category__checkbox_input_Political">
-                <label for="filter_category__checkbox_input_Political" class="filter_category__checkbox">Political</label>
-              </li>
-              <li class="filter_category__checkbox-wrapper">
-                <input value="Action & Adventure" class="filter_category__checkbox_input" type="checkbox" name="filter" id="filter_category__checkbox_input_Action-Adventure">
-                <label for="filter_category__checkbox_input_Action-Adventure" class="filter_category__checkbox">Action & Adventure</label>
-              </li>
-              <li class="filter_category__checkbox-wrapper">
-                <input value="Media Tie-In" class="filter_category__checkbox_input" type="checkbox" name="filter" id="filter_category__checkbox_input_Media_Tie-In">
-                <label for="filter_category__checkbox_input_Media_Tie-In" class="filter_category__checkbox">Media Tie-In</label>
-              </li>
-              <li class="filter_category__checkbox-wrapper">
-                <input value="Genetic Engineering" class="filter_category__checkbox_input" type="checkbox" name="filter" id="filter_category__checkbox_input_Genetic-Engineering">
-                <label for="filter_category__checkbox_input_Genetic-Engineering" class="filter_category__checkbox">Genetic Engineering</label>
-              </li>
+            <ul class="filter-category__wrapper">
+              <!-- category -->
             </ul>
             <button class="clear-filters-button button">Clear Filters</button>
         </div>
@@ -113,10 +78,10 @@
         <h2 class="sort-section__h2 h2">SORT</h2>
         <div class="sort-wrapper">
             <select class="sort_selector select" id="name" name="sort">
-              <option value="Name-a-z" selected>Name(A-Z)</option>
-              <option value="Name-z-a">Name(Z-A)</option>
-              <option value="Price-lowest">Price(lowest)</option>
-              <option value="Price-highest">Price(highest)</option>
+              <option class="select_option" value="Name-a-z" selected>Name(A-Z)</option>
+              <option class="select_option" value="Name-z-a">Name(Z-A)</option>
+              <option class="select_option" value="Price-lowest">Price(lowest)</option>
+              <option class="select_option" value="Price-highest">Price(highest)</option>
             </select>
         </div>
         <button class="reset-settings-button button">Reset settings</button>
@@ -132,13 +97,17 @@
   </main>
   <footer class="footer">
     <div class="footer__container container">
-      <a class="rss" href="https://rs.school/js/">
-        <div class="rss__logo"></div>
-      </a>
-      <a class="github" href="https://github.com/NewAnton/">
-        <div class="github__logo"></div>
-        <p class="github__description">© 2022 Anton Korobov</p>
-      </a>
+      <p class="link-wrapper">
+        <a class="rss-link" href="https://rs.school/js/">
+          <img src="./assets/rs_school_js.svg" alt="rs school logo" class="rss__logo">
+        </a>
+      </p>
+      <p class="link-wrapper">
+        <a class="github-link" href="https://github.com/NewAnton/">
+          <img src="./assets/iconmonstr-github-2.svg" alt="github logo" class="github__logo">
+          <span class="github-link_description">© 2022 Anton Korobov</span>
+        </a>
+      </p>
     </div>
   </footer>
   <!-- <script type="module" src="./index.js"></script> -->

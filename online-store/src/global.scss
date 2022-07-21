@@ -10,48 +10,45 @@ html {
 
 .body {
   font-size: 2rem;
-  background-color: rgb(218, 218, 218);
 }
 
 a {
   text-decoration: none;
-
-}
-
-li {
-  list-style: none;
+  &:visited {
+    color: inherit;
+  }
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }
 
 .container {
-  background-color: white;
-  border: 2px solid #ccc;
   max-width: 1200px;
   margin: 0 auto;
   padding: 10px 40px;
 }
 
-.header__container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.header {
+  background-color: #eee;
 }
 
-.header__nav__ul {
-  // width: 30%;
+.header__container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  gap: 50px;
+}
+
+.title {
+  font-size: 3rem;
 }
 
 .header__cart {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .cart__icon {
-  width: 50px;
+  width: 7rem;
 }
 
 .cart__counter {
@@ -60,22 +57,45 @@ li {
   top: 50%;
   left: 0;
   font-size: 2rem;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 2rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 3rem;
   background-color: #ccc;
   padding: 0.5rem;
   text-align: center;
-  line-height: 2rem;
+  line-height: 3rem;
   // left: 50%;
   // transform: translate(-50%, 0);
 }
 
-.show-element {
+.cart__counter_visible {
   visibility: visible;
 }
 
-.search-section__search-input {
+.navigation {
+  width: 100%;
+  margin: 1rem 10%;
+  font-size: 3rem;
+}
+
+// .header__container {
+// }
+
+@media (min-width: 768px) {
+  .header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.navigation__list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-form__input {
   width: 100%;
   box-sizing: border-box;
   border: 2px solid #ccc;
@@ -94,22 +114,22 @@ li {
   margin: 8px 0;
   display: inline-block;
   border: 2px solid #ccc;
-  // border-radius: 4px;
   box-sizing: border-box;
   font-size: 1.5rem;
 }
 
-.filter_category-wrapper {
+.filter-category__wrapper {
   display: flex;
   flex-wrap: wrap;
   margin: 3px auto;
 }
 
-.filter_category__checkbox-wrapper {
+.filter-category__checkbox-wrapper{
+  list-style: none;
   width: 33%;
 }
 
-.filter_category__checkbox {
+.filter-category__checkbox-label{
   display: block;
   box-sizing: border-box;
   padding: 4px;
@@ -121,12 +141,12 @@ li {
   text-decoration: none;
 }
 
-.filter_category__checkbox_input {
+.filter-category__checkbox-input {
   position: absolute;
   visibility: hidden;
 }
 
-.filter_category__checkbox_input:checked~.filter_category__checkbox {
+.filter-category__checkbox-input:checked~.filter-category__checkbox-label{
   text-decoration: underline;
 }
 
@@ -155,23 +175,50 @@ li {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 4%;
 }
 
 .card {
+  box-sizing: border-box;
   position: relative;
-  width: 20%;
-  padding: 10px;
-  box-shadow: 0 10px 5px #d1d1d1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 48%;
+  padding: 1rem 0;
+  box-shadow: 0 7px 5px #d1d1d1;
   .card_title {
-    height: 70px;
+    margin: 1rem 0;
+    height: 10%;
   }
   .card_img {
     width: 100%;
   }
+  .card_description{
+    margin: 1rem;
+    margin-bottom: 0;
+  }
 }
 
-.card__click-area {
+@media (min-width: 768px) {
+  .cards-wrapper {
+    gap: 4%;
+  }
+  .card {
+    width: 30%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards-wrapper {
+    gap: 4%;
+  }
+  .card {
+    width: 22%;
+  }
+}
+
+.card_click-area {
   position: absolute;
   top: 0;
   left: 0;
@@ -179,8 +226,7 @@ li {
   bottom: 0;
 }
 
-.buy-card {
-  // box-shadow: 0 10px 10px #000000;
+.card_click-area_buy {
   background-color: rgba($color: #ccc, $alpha: 0.5);
   background-image: url('./assets/shopping-bag.png');
   background-size: 80%;
@@ -200,28 +246,32 @@ li {
   }
 }
 
+.footer {
+  background-color: #eee;
+}
+
 .footer__container {
-  display: flex;
-  justify-content: center;
-  gap: 50px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .footer__container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+
+.link-wrapper {
+  margin: 1rem;
 }
 
 .rss__logo {
-  display: inline-block;
   height: 10rem;
-  width: 20rem;
-  background-image: url('./assets/rs_school_js.svg');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
+  width: 100%;
 }
 
 .github__logo {
-  display: inline-block;
   height: 10rem;
-  width: 10rem;
-  background-image: url('./assets/iconmonstr-github-2.svg');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
+  width: 100%;
 }
