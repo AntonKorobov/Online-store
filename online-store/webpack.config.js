@@ -24,6 +24,7 @@ const baseConfig = {
         new CopyWebpackPlugin({
             patterns: [
               { from: "src/assets", to: "assets" },
+              { from: "src/components/booksBase.json", to: "components/booksBase.json"}
             //   { from: "other", to: "public" },
             ],
           }),
@@ -52,13 +53,13 @@ const baseConfig = {
                     filename: 'assets/[name][ext]',
                 }
             },
-            {
-                test: /\.json$/,
-                type: 'asset/resource',
-                generator: {
-                    filename: './components/[name][ext]',
-                }
-            },
+            // {
+            //     test: /\.json$/,
+            //     type: 'asset/resource',
+            //     generator: {
+            //         filename: './components/[name][ext]',
+            //     }
+            // },
             {
                 test: /\.html$/,
                 use: [
@@ -91,49 +92,4 @@ module.exports = ({ mode }) => {
 
     return merge(baseConfig, envConfig);
 };
-
-// const { merge } = require('webpack-merge');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-// const EslingPlugin = require('eslint-webpack-plugin');
-// const { assert } = require('console');
-
-// const baseConfig = {
-//     entry: path.resolve(__dirname, './src/index'),
-//     mode: 'development',
-//     module: {
-//         rules: [{
-//                 test: /\.css$/i,
-//                 use: ['style-loader', 'css-loader'],
-//             },
-//             {
-//                 test: /\.[tj]s$/,
-//                 use: 'ts-loader'
-//             },
-//             {
-//                 test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
-//                 type: 'asset/resource',
-//                 generator: {
-//                     filename: 'assets/[name][ext]',
-//                 }
-//             },
-//         ],
-//     },
-//     resolve: {
-//         extensions: ['.ts', '.js'],
-//     },
-//     output: {
-//         filename: 'index.js',
-//         path: path.resolve(__dirname, '../dist'),
-//         assetModuleFilename: 'assets/[name][ext]',
-//     },
-//     plugins: [
-//         new HtmlWebpackPlugin({
-//             template: path.resolve(__dirname, './src/index.html'),
-//             filename: 'index.html',
-//         }),
-//         new CleanWebpackPlugin(),
-//         new EslingPlugin({ extensions: 'ts' }),
-//     ],
-// };
 

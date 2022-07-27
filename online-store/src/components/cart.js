@@ -6,7 +6,7 @@ export function addProductToCart(productProperty) {
 
     let search = cartData.indexOf(id);
     if ((search === -1)&&(cartCounter === 20)){
-        alert("Sorry, cart is full. You can delete some products to add new.");
+        alert("Sorry, cart is full. You need to delete some products to add new.");
     }
     if ((search === -1)&&(cartCounter < 20)) {
         cartData.push(id);

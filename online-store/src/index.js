@@ -17,11 +17,10 @@ import { filterProducts } from './components/filter.js'
 
 import { addProductToCart } from './components/cart.js'
 
-import { booksBase } from './components/booksBase.ts'
-
-// import booksBase from './components/booksBase.json' assert { type: 'json' };
-// import booksBase from './components/booksBase.json'
 // const booksBase = require('./components/booksBase.json');
+// import { booksBase } from './components/booksBase.ts'
+// import booksBase from './components/booksBase.json' assert { type: 'json' };
+import booksBase from './components/booksBase.json'
 
 // const responce = await fetch('./components/booksBase.json');
 // const booksBase = await responce.json();
