@@ -7,7 +7,7 @@ export function showSearchResults(array, text){
     return array.filter(element => element['title'].search(regexp) !== -1 )
 }
 
-export function getTypingTextValue(foo){
+export function eventGetTypingTextValue(foo){
     searchInput.addEventListener('keyup', (event)=>{
         typedTextValue = event.target.value;
         foo()
