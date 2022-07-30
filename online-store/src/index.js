@@ -1,49 +1,24 @@
 import './global.css';
 
-const filterCategoryWrapper = document.querySelector(".filter-category__wrapper");
-createCategoryCheckbox();//create HTML
-
-import { showSearchResults } from './components/search'
-
-import { cartCounter } from './components/cart.js'
-import { cartData } from './components/cart.js'
-
-let typedTextValue = '';
-
-import{ sortProducts } from './components/sort.js'
-
-import { listOfFilters } from './components/filter.js'
-import { filterProducts } from './components/filter.js'
-
-import { addProductToCart } from './components/cart.js'
-
-// const booksBase = require('./components/booksBase.json');
-// import { booksBase } from './components/booksBase.ts'
-// import booksBase from './components/booksBase.json' assert { type: 'json' };
 import booksBase from './components/booksBase.json'
 
-// const responce = await fetch('./components/booksBase.json');
-// const booksBase = await responce.json();
+import { showSearchResults, getTypingTextValue, eventInputSearchArea } from './components/search'
+import { typedTextValue } from './components/search'
 
-const cardsToBuyCounter = document.querySelector(".cart__counter");
+import { cartCounter, cartData, addProductToCart, updateCartCounter } from './components/cart'
+
+import {listOfFilters, 
+        filterProducts, 
+        setFilters, 
+        updateFilters, 
+        eventClickClearFiltersButton, 
+        eventClickFiltersCheckboxInput } from './components/filter'
+
+import{ sortProducts, eventChangeSortSelector } from './components/sort'
+
+import { eventClickResetSettings } from './components/resetSettings'
 
 const cardsWrapper = document.querySelector(".cards-wrapper");
-const clearFiltersButton = document.querySelector(".clear-filters-button");
-const resetSettingsButton = document.querySelector(".reset-settings-button");
-
-const searchInput = document.querySelector('.search-form__input');
-searchInput.select();
-// document.querySelector('.search-input-form').onsubmit = "return false";
-
-const filtersWrapper = document.querySelector(".filters-wrapper");
-const sortWrapper = document.querySelector(".sort-wrapper");
-const filterLanguageSelect = document.querySelector(".filter-language");
-const filterCoverTypeSelect = document.querySelector(".filter-coverType");
-const listOfCheckbox = document.querySelectorAll('.filter-category__checkbox-input');
-
-const listOfCheckboxAllInput = document.querySelector('#filter-category__checkbox-input-All');
-
-const sortSelector = document.querySelector(".sort_selector");
 
 //-------------------------------------------------------------
 class BookCard {
@@ -81,79 +56,14 @@ showCards();
 updateCartCounter();
 
 //-------------------------------------------------------------
-function setFilters() {
-    let listOfFiltersData = JSON.parse(localStorage.getItem("listOfFiltersData")) || null;
-    if(listOfFiltersData !== null){
-        filterLanguageSelect.value = listOfFiltersData.language;
-        filterCoverTypeSelect.value = listOfFiltersData.coverType;
-        sortSelector.value = listOfFiltersData.sortType;
-        listOfFiltersData.category.forEach(element => {
-            listOfCheckbox.forEach(filterName => {
-                if(filterName.value === element){
-                    filterName.checked = true;
-                };
-            });
-        });
-    }
-}
 
-function updateFilters() {
-    listOfFilters.language = '';
-    listOfFilters.category.length = 0;
-    listOfFilters.coverType = '';
-    listOfFilters.sortType = '';
-
-    listOfCheckbox.forEach(element => {
-        if((element.checked === true)&&(element.value !== "All")) {
-            listOfFilters.category.push(element.value);
-        }
-    });
-    
-    if (filterLanguageSelect.value !== "") {
-        listOfFilters.language = filterLanguageSelect.value;
-    }
-    if (filterCoverTypeSelect.value !== "") {
-        listOfFilters.coverType = filterCoverTypeSelect.value;
-    }
-    if(listOfFilters.category.length === 0) {
-        listOfCheckboxAllInput.checked = true; //default value
-    }else{
-        listOfCheckboxAllInput.checked = false;
-    }
-
-    listOfFilters.sortType = sortSelector.value;
-
-    //save in localStorage
-    localStorage.setItem("listOfFiltersData", JSON.stringify(listOfFilters));
-}
-
-function getTypingTextValue(){
-    searchInput.addEventListener('keyup', (event)=>{
-        typedTextValue = event.target.value;
-        showCards()
-    })
-}
-
-function createCategoryCheckbox() {
-    const arrayOfCategory = ['All', 'Classics','Science Fiction', 'Literary', 'Psychological', 'Political', 'Action & Adventure', 'Media Tie-In', 'Genetic Engineering'];
-
-    arrayOfCategory.forEach(element => {
-        let categoryCheckbox = document.createElement("li");
-        categoryCheckbox.classList.add("filter-category__checkbox-wrapper");
-        categoryCheckbox.innerHTML = ` 
-            <input value="${element}" class="filter-category__checkbox-input" type="checkbox" name="filter" id="filter-category__checkbox-input-${element}">
-            <label for="filter-category__checkbox-input-${element}" class="filter-category__checkbox-label">${element}</label>`
-        filterCategoryWrapper.appendChild(categoryCheckbox)
-    });
-}
-
-function showCards() {
+export function showCards() {
     cardsWrapper.innerHTML = '';
-
+    
     updateFilters();
 
     let arrayOfBooks = filterProducts(booksBase, listOfFilters);
-    arrayOfBooks = sortProducts(arrayOfBooks, sortSelector.value);
+    arrayOfBooks = sortProducts(arrayOfBooks);
     arrayOfBooks = showSearchResults(arrayOfBooks, typedTextValue);
 
     if(arrayOfBooks.length === 0) cardsWrapper.innerHTML='<h2 class="sorry-message">Sorry, no results were found:(</h2>';
@@ -179,58 +89,19 @@ function showCards() {
     }
 };
 
-function updateCartCounter() {
-    cardsToBuyCounter.innerHTML = cartCounter;
-    if(cartCounter !== 0){
-        cardsToBuyCounter.classList.add('cart__counter_visible');
-    }else{
-        cardsToBuyCounter.classList.remove('cart__counter_visible');
-    }
-}
 //-------------------------------------------------------------
 
 //----------------EVENTS---------------------------------------
-resetSettingsButton.addEventListener('click', () => {
-    localStorage.clear();
-    document.location.reload();
-})
+eventClickClearFiltersButton(showCards);
+eventClickFiltersCheckboxInput(showCards);
 
-getTypingTextValue();
+eventChangeSortSelector(showCards);
 
-searchInput.addEventListener('input', (event) => {
-   if(event.target.value === '') {
-       typedTextValue = '';
-       searchInput.value = '';
-       showCards();
-   }
-});
+eventClickResetSettings();
 
-clearFiltersButton.addEventListener('click', () => {
-    filterLanguageSelect.selectedIndex = 0;
-    filterCoverTypeSelect.selectedIndex = 0;
+getTypingTextValue(showCards);
 
-    listOfCheckbox.forEach(element => {
-        element.checked = false;
-    })
-    showCards();
-});
-
-filtersWrapper.addEventListener('click', (event) => {
-    if(event.target.value === 'All') {
-        listOfCheckbox.forEach(element => {
-            element.checked = false;
-        })
-    }
-    if(event.target.classList.contains('filter-category__checkbox-input')){
-        showCards();
-    }
-});
-
-filtersWrapper.addEventListener('change',(event) => {
-    if(event.target.classList.contains('select')){
-        showCards();
-    }
-}, true);
+eventInputSearchArea(showCards)
 
 cardsWrapper.addEventListener('click',(event) => {
     if(event.target.classList.contains('card_click-area')){
@@ -243,10 +114,4 @@ cardsWrapper.addEventListener('click',(event) => {
     }
     updateCartCounter();
 });
-
-sortWrapper.addEventListener('change',(event) => {
-    if(event.target.classList.contains('select')){
-        showCards();
-    }
-}, true);
 //-------------------------------------------------------------

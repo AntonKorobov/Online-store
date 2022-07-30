@@ -1,4 +1,7 @@
-export function sortProducts(arrayOfProducts, typeOfSorting) {
+const sortWrapper = document.querySelector(".sort-wrapper");
+const sortSelector = document.querySelector(".sort_selector");
+
+export function sortProducts(arrayOfProducts, typeOfSorting = sortSelector.value) {
     let filteredArray = [...arrayOfProducts];
 
     if(typeOfSorting === "Name-a-z"){
@@ -25,4 +28,12 @@ export function sortProducts(arrayOfProducts, typeOfSorting) {
         })
     }
 return filteredArray
+}
+
+export function eventChangeSortSelector(foo) {
+    sortWrapper.addEventListener('change',(event) => {
+        if(event.target.classList.contains('select')){
+            foo();
+        }
+    }, true);
 }

@@ -1,3 +1,5 @@
+const cardsToBuyCounter = document.querySelector(".cart__counter");
+
 export let cartData = JSON.parse(localStorage.getItem("cartData")) || [];
 export let cartCounter = cartData.length;
 
@@ -18,4 +20,13 @@ export function addProductToCart(productProperty) {
     cartCounter = cartData.length;
 
     localStorage.setItem("cartData", JSON.stringify(cartData));
+}
+
+export function updateCartCounter() {
+    cardsToBuyCounter.innerHTML = cartCounter;
+    if(cartCounter !== 0){
+        cardsToBuyCounter.classList.add('cart__counter_visible');
+    }else{
+        cardsToBuyCounter.classList.remove('cart__counter_visible');
+    }
 }
