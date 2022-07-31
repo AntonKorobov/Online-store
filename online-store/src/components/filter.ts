@@ -25,7 +25,7 @@ export const listOfFilters: listOfFiltersInterface = {
     sortType: '',
 };
 
-export function filterProducts(arrayOfProducts: BookInterface[], listOfFilters: listOfFiltersInterface) {
+export function filterProducts(arrayOfProducts: BookInterface[], listOfFilters: listOfFiltersInterface): BookInterface[] {
     let filteredArray = [...arrayOfProducts];
 
     if (listOfFilters.language) {
@@ -40,7 +40,7 @@ export function filterProducts(arrayOfProducts: BookInterface[], listOfFilters: 
     return filteredArray;
 }
 
-export function setFilters() {
+export function setFilters(): void {
     const request = localStorage.getItem('listOfFiltersData');
     let listOfFiltersData: void | listOfFiltersInterface;
     if (request !== null) {
@@ -60,7 +60,7 @@ export function setFilters() {
     }
 }
 
-export function updateFilters() {
+export function updateFilters(): void {
     listOfFilters.language = '';
     listOfFilters.category.length = 0;
     listOfFilters.coverType = '';
@@ -89,7 +89,7 @@ export function updateFilters() {
     localStorage.setItem('listOfFiltersData', JSON.stringify(listOfFilters));
 }
 
-export function eventClickClearFiltersButton(foo: () => void) {
+export function eventClickClearFiltersButton(foo: () => void): void {
     clearFiltersButton.addEventListener('click', () => {
         filterLanguageSelect.selectedIndex = 0;
         filterCoverTypeSelect.selectedIndex = 0;
@@ -101,7 +101,7 @@ export function eventClickClearFiltersButton(foo: () => void) {
     });
 }
 
-export function eventClickFiltersCheckboxInput(foo: () => void) {
+export function eventClickFiltersCheckboxInput(foo: () => void): void {
     filtersWrapper.addEventListener('click', (event) => {
         if ((event.target as HTMLInputElement).value === 'All') {
             listOfCheckbox.forEach((element) => {
@@ -124,11 +124,11 @@ export function eventClickFiltersCheckboxInput(foo: () => void) {
     );
 }
 
-function filterByLanguage(array: BookInterface[], language: string) {
+function filterByLanguage(array: BookInterface[], language: string): BookInterface[] {
     return array.filter((element) => element['language'] === language);
 }
 
-function filterByCategory(array: BookInterface[], category: string[]) {
+function filterByCategory(array: BookInterface[], category: string[]): BookInterface[] {
     if (category.length === 0) return array;
     return array.filter((element) => {
         for (let i = 0; i < category.length; i++) {
@@ -138,12 +138,12 @@ function filterByCategory(array: BookInterface[], category: string[]) {
     });
 }
 
-function filterByCoverType(array: BookInterface[], coverType: string) {
+function filterByCoverType(array: BookInterface[], coverType: string): BookInterface[] {
     return array.filter((element) => element['coverType'] === coverType);
 }
 
-function createCategoryCheckbox() {
-    const arrayOfCategory = [
+function createCategoryCheckbox(): void {
+    const arrayOfCategory: string[] = [
         'All',
         'Classics',
         'Science Fiction',

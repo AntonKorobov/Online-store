@@ -4,7 +4,7 @@ export const CART_CAPACITY: number = 20;
 export let cartData: (string | number)[] = JSON.parse(localStorage.getItem('cartData') || '[]');
 export let cartCounter: number = cartData.length;
 
-export function addProductToCart(productProperty: string): void {
+export function addProductToCart(productProperty: string | number): void {
     const id = productProperty;
 
     const search = cartData.indexOf(id);

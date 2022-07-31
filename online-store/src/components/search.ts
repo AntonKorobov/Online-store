@@ -4,8 +4,8 @@ const searchInput = document.querySelector('.search-form__input') as HTMLInputEl
 searchInput.select();
 export let typedTextValue = '';
 
-export function showSearchResults(array: BookInterface[], text: string) {
-    const regexp = new RegExp(text, 'i');
+export function showSearchResults(array: BookInterface[], text: string | number) {
+    const regexp = new RegExp(text.toString(), 'i');
     return array.filter((element) => element['title'].search(regexp) !== -1);
 }
 

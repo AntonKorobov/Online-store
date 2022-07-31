@@ -18,7 +18,7 @@ interface BookCardInterface {
     coverType: string;
     language: string;
     img: string;
-    cardId: string;
+    cardId: string | number;
     cardClass: string;
 
     createCard(): HTMLElement;
@@ -31,7 +31,7 @@ class BookCard implements BookCardInterface {
     coverType: string;
     language: string;
     img: string;
-    cardId: string;
+    cardId: string | number;
     cardClass: string;
 
     constructor(
@@ -41,7 +41,7 @@ class BookCard implements BookCardInterface {
         coverType: string,
         language: string,
         img: string,
-        cardId: string,
+        cardId: string | number,
         cardClass: string
     ) {
         this.title = title;
@@ -71,7 +71,7 @@ class BookCard implements BookCardInterface {
     }
 }
 
-export function showCards() {
+export function showCards(): void {
     cardsWrapper.innerHTML = '';
 
     updateFilters();

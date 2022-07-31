@@ -10,5 +10,5 @@ export interface BookInterface {
     language: string;
     coverType: string;
     img: string;
-    id: string;
+    id: string | number;
 }
