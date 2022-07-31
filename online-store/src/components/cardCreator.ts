@@ -93,7 +93,6 @@ export function showCards() {
         const cardId = arrayOfBooks[i]['id'];
         let cardClass = '';
         if (cartData.length !== 0) {
-            //!!!
             if (cartData.indexOf(arrayOfBooks[i]['id']) !== -1) {
                 cardClass = 'card_click-area_buy';
             }
