@@ -64,8 +64,6 @@ a {
   padding: 0.5rem;
   text-align: center;
   line-height: 3rem;
-  // left: 50%;
-  // transform: translate(-50%, 0);
 }
 
 .cart__counter_visible {
@@ -77,9 +75,6 @@ a {
   margin: 1rem 10%;
   font-size: 3rem;
 }
-
-// .header__container {
-// }
 
 @media (min-width: 768px) {
   .header__container {
@@ -99,7 +94,6 @@ a {
   width: 100%;
   box-sizing: border-box;
   border: 2px solid #ccc;
-  // border-radius: 4px;
   font-size: 16px;
   background-color: white;
   background-image: url('./assets/searchicon.png');
@@ -133,7 +127,6 @@ a {
   display: block;
   box-sizing: border-box;
   padding: 4px;
-  // font-size: 2rem;
   min-width: 12px;
   min-height: 12px;
   transition: all 0.2s;
@@ -156,9 +149,7 @@ a {
   width: 150px;
   height: 50px;
   border: 2px solid #ccc;
-  // border-radius: 4px;
   background-color: white;
-  // color: white;
   font-size: 1.5rem;
   &:hover {
     cursor: pointer;
@@ -168,7 +159,7 @@ a {
     background-color: rgb(63, 63, 63);
   }
 }
-//------------------------------------------------
+
 .cards-wrapper {
   width: 100%;
   margin: 50px auto;

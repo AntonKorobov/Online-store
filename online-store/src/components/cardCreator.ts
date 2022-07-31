@@ -5,7 +5,7 @@ import booksBase from './booksBase.json';
 import { showSearchResults } from './search';
 import { typedTextValue } from './search';
 
-import { cartCounter, cartData, addProductToCart, updateCartCounter } from './cart';
+import { cartCounter, cartData, addProductToCart, updateCartCounter, CART_CAPACITY } from './cart';
 
 import { listOfFilters, filterProducts, updateFilters } from './filter';
 
@@ -106,7 +106,7 @@ export function showCards() {
 export function eventClickCard() {
     cardsWrapper.addEventListener('click', (event) => {
         if ((event.target as HTMLElement).classList.contains('card_click-area')) {
-            if (cartCounter === 20) {
+            if (cartCounter === CART_CAPACITY) {
                 (event.target as HTMLElement).classList.remove('card_click-area_buy');
             } else {
                 (event.target as HTMLElement).classList.toggle('card_click-area_buy');
