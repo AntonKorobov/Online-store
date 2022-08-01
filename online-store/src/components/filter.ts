@@ -25,7 +25,10 @@ export const listOfFilters: listOfFiltersInterface = {
     sortType: '',
 };
 
-export function filterProducts(arrayOfProducts: BookInterface[], listOfFilters: listOfFiltersInterface): BookInterface[] {
+export function filterProducts(
+    arrayOfProducts: BookInterface[],
+    listOfFilters: listOfFiltersInterface
+): BookInterface[] {
     let filteredArray = [...arrayOfProducts];
 
     if (listOfFilters.language) {
@@ -124,7 +127,7 @@ export function eventClickFiltersCheckboxInput(foo: () => void): void {
     );
 }
 
-function filterByLanguage(array: BookInterface[], language: string): BookInterface[] {
+export function filterByLanguage(array: BookInterface[], language: string): BookInterface[] {
     return array.filter((element) => element['language'] === language);
 }
 

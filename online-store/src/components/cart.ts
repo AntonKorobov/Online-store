@@ -1,5 +1,5 @@
 const cardsToBuyCounter = document.querySelector('.cart__counter') as HTMLElement;
-export const CART_CAPACITY: number = 20;
+export const CART_CAPACITY = 20;
 
 export let cartData: (string | number)[] = JSON.parse(localStorage.getItem('cartData') || '[]');
 export let cartCounter: number = cartData.length;

@@ -5,7 +5,10 @@ const sortSelector = document.querySelector('.sort_selector') as HTMLInputElemen
 
 type SortingTypes = 'Name-a-z' | 'Name-z-a' | 'Price-highest' | 'Price-lowest';
 
-export function sortProducts(arrayOfProducts: BookInterface[], typeOfSorting: SortingTypes = sortSelector.value as SortingTypes): BookInterface[] {
+export function sortProducts(
+    arrayOfProducts: BookInterface[],
+    typeOfSorting: SortingTypes = sortSelector.value as SortingTypes
+): BookInterface[] {
     let filteredArray = [...arrayOfProducts];
 
     if (typeOfSorting === 'Name-a-z') {
