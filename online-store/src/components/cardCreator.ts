@@ -24,7 +24,7 @@ interface BookCardInterface {
     createCard(): HTMLElement;
 }
 
-class BookCard implements BookCardInterface {
+export class BookCard implements BookCardInterface {
     title: string;
     author: string;
     price: number;
