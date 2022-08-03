@@ -4,7 +4,6 @@
 
 import { sortProducts } from '../components/sort';
 import booksBase from '../components/booksBase.json';
-// import { BookCard } from '../components/cardCreator';
 
 test('Sort by title name', () => {
     const ArrayOfProducts = [
@@ -51,7 +50,7 @@ test('Sort by title name', () => {
             id: '2',
         },
     ];
-    
+
     const sortedByNameArrayOfProducts = [
         {
             title: '1984',
@@ -100,9 +99,23 @@ test('Sort by title name', () => {
 });
 
 test('Books base is correct', () => {
-    const arrayOfProperties = ["title", "author", "publisher", "category", "description", "pages", "publishDate", "price", "language", "coverType", "coverType", "img", "id"];
+    const arrayOfProperties = [
+        'title',
+        'author',
+        'publisher',
+        'category',
+        'description',
+        'pages',
+        'publishDate',
+        'price',
+        'language',
+        'coverType',
+        'coverType',
+        'img',
+        'id',
+    ];
     booksBase.forEach((element) => {
-        for (let value of arrayOfProperties) {
+        for (const value of arrayOfProperties) {
             expect(element).toHaveProperty(value);
         }
         expect(element.category.length).toBeGreaterThan(0);
@@ -110,41 +123,5 @@ test('Books base is correct', () => {
         expect(element.publishDate).toBeLessThanOrEqual(currentYear);
         expect(element.price).not.toEqual(0);
         expect(element.img).toMatch(/\.jpg$/i);
-    })
+    });
 });
-
-// test('Create good card', () => {
-//     const demoBooksBase = [
-//         {
-//             "title": "Steppenwolf",
-//             "author": "Hermann Hesse",
-//             "publisher": "Picador USA",
-//             "category": [
-//                 "Classics",
-//                 "Literary"
-//             ],
-//             "description": "none",
-//             "pages": 224,
-//             "publishDate": 2002,
-//             "price": 17,
-//             "language": "German",
-//             "coverType": "Paperback",
-//             "img": "./assets/Steppenwolf.jpg",
-//             "id": "4"
-//         }
-//     ]
-
-//     const cardTitle = demoBooksBase[0]['title'];
-//     const cardAuthor = demoBooksBase[0]['author'];
-//     const cardPrice = demoBooksBase[0]['price'];
-//     const coverType = demoBooksBase[0]['coverType'];
-//     const language = demoBooksBase[0]['language'];
-//     const img = demoBooksBase[0]['img'];
-//     const cardId = demoBooksBase[0]['id'];
-//     let cardClass = '';
-
-//     const testCard = new BookCard(cardTitle, cardAuthor, cardPrice, coverType, language, img, cardId, cardClass);
-//     expect(BookCard).toBe('<h2 class="card_title">Steppenwolf</h2><img class="card_img" src="./assets/Steppenwolf.jpg" alt=""><div class="card_description"><p class="card_author"><b>Author:</b> Hermann Hesse</p><p class="card_price"><b>Price:</b> 17</p><p class="card_cover-type"><b>Cover type:</b> Paperback</p><p class="card_language"><b>Language:</b> German</p><div class="card_click-area " data-cardId="4"></div></div>');
-// });
-
-

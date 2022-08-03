@@ -1,15 +1,11 @@
-const cardsWrapper = document.querySelector('.cards-wrapper') as HTMLElement;
-
 import booksBase from './booksBase.json';
-
 import { showSearchResults } from './search';
 import { typedTextValue } from './search';
-
 import { cartCounter, cartData, addProductToCart, updateCartCounter, CART_CAPACITY } from './cart';
-
 import { listOfFilters, filterProducts, updateFilters } from './filter';
-
 import { sortProducts } from './sort';
+
+const cardsWrapper = document.querySelector('.cards-wrapper') as HTMLElement;
 
 interface BookCardInterface {
     title: string;

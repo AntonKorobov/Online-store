@@ -1,5 +1,4 @@
 import './global.css';
-
 import { eventClickCard, showCards } from './components/cardCreator';
 import { eventGetTypingTextValue, eventInputSearchArea } from './components/search';
 import { updateCartCounter } from './components/cart';
