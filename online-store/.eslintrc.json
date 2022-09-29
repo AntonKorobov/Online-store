@@ -1,25 +1,34 @@
 {
-    "plugins": ["prettier", "import", "@typescript-eslint"],
-    "extends": [
-        "plugin:prettier/recommended",
-        "prettier",
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended"
-    ],
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true
+    },
+    "extends": ["airbnb-typescript/base", "eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaVersion": 2020,
-        "sourceType": "module"
+      "project": "./tsconfig.json"
     },
-    "env": {
-        "es6": true,
-        "browser": true,
-        "node": true
-    },
+    "plugins": ["prettier", "import", "@typescript-eslint"],
+    "ignorePatterns": ["*.config.js", "node_modules/", "dist/"],
     "rules": {
-        "no-debugger": "off",
-        "no-console": 0,
-        "class-methods-use-this": "off",
-        "@typescript-eslint/no-explicit-any": 2
+      "no-underscore-dangle": ["error", { "allow": ["foo_", "_bar", "_id"] }],
+      "no-param-reassign": 0,
+      "max-len": ["warn", { "code": 120 }],
+      "indent": [
+        "warn",
+        2,
+        {
+          "SwitchCase": 1
+        }
+      ],
+      "@typescript-eslint/indent": [
+        "warn",
+        2,
+        {
+          "SwitchCase": 1
+        }
+      ],
+      "import/prefer-default-export": "off",
     }
-}
+  }
