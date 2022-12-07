@@ -1,7 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-
 import { sortProducts } from '../components/sort';
 import booksBase from '../components/booksBase.json';
 
