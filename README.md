@@ -1,2 +1,2 @@
-# newanton-JSFE2022Q1
-Private repository for @newanton
+# Online-store
+- Deployment: https://newanton.github.io/Online-store/
