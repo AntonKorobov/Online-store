@@ -1,2 +1,2 @@
 # Online-store
-- Deployment: https://newanton.github.io/Online-store/
+- Deployment: https://AntonKorobov.github.io/Online-store/
